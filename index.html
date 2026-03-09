@@ -5,52 +5,172 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIDM Project Command Center</title>
   <style>
-    :root {
-      --primary: #1A4731;
-      --accent: #D4A843;
-      --text: #0D0D0D;
-      --bg-light: #F0FDF4;
-      --bg-warm: #FFFBF0;
-      --border: #E5E7EB;
-      --alt-row: #F9FAFB;
-      --body-text: #4B5563;
-      --label: #6B7280;
-      --health-green: #16A34A;
-      --health-yellow: #EAB308;
-      --health-red: #DC2626;
-    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, sans-serif; color: var(--text); background: #fff; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-    header { background: var(--primary); color: #fff; padding: 20px 32px; margin: 0 -16px; }
-    .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #FFFBF0;
+      color: #0D0D0D;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    header {
+      background: #1A4731;
+      color: white;
+      padding: 24px 32px;
+      margin: 0 -16px;
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     header h1 { font-size: 24px; font-weight: 700; }
-    .subtitle { color: var(--accent); font-size: 14px; margin-top: 4px; }
+    .subtitle { color: #D4A843; font-size: 14px; margin-top: 4px; }
     .timestamp { text-align: right; }
-    .timestamp .label { display: block; font-size: 12px; opacity: 0.8; }
-    .timestamp .date { display: block; color: var(--accent); font-size: 14px; font-weight: 600; }
-    .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
-    .card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
-    .card-number { display: block; font-size: 32px; font-weight: 700; color: var(--primary); }
-    .card-label { display: block; font-size: 14px; color: var(--label); margin-top: 4px; }
+    .timestamp .label { display: block; font-size: 12px; color: rgba(255,255,255,0.7); }
+    .timestamp .date { font-size: 14px; color: #D4A843; font-weight: 600; }
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .card-number { display: block; font-size: 32px; font-weight: 700; color: #1A4731; }
+    .card-number.warn { color: #DC2626; }
+    .card-label { display: block; font-size: 14px; color: #6B7280; margin-top: 4px; }
     .section { margin-top: 32px; }
-    .section h2 { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
-    .section-subtitle { font-size: 14px; color: var(--label); margin-bottom: 12px; }
+    .section h2 { font-size: 18px; font-weight: 700; color: #1A4731; margin-bottom: 12px; }
+    .section-subtitle { font-size: 13px; color: #6B7280; margin-bottom: 12px; }
     .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; }
-    thead tr { background: var(--bg-light); }
-    th { text-align: left; padding: 10px 16px; font-size: 12px; text-transform: uppercase; font-weight: 600; color: var(--primary); border-bottom: 2px solid var(--border); }
-    td { padding: 12px 16px; font-size: 14px; color: var(--body-text); border-bottom: 1px solid var(--border); }
-    tbody tr:nth-child(even) { background: var(--alt-row); }
-    .badge { display: inline-block; padding: 4px 14px; border-radius: 12px; font-size: 13px; font-weight: 600; }
-    .badge-green { background: var(--health-green); color: #fff; }
-    .badge-yellow { background: var(--health-yellow); color: #1a1a1a; }
-    .badge-red { background: var(--health-red); color: #fff; }
-    .overdue-high { color: var(--health-red); font-weight: 600; }
-    .overdue-med { color: var(--health-yellow); font-weight: 600; }
-    footer { background: var(--bg-warm); text-align: center; padding: 20px; margin: 40px -16px 0; font-size: 12px; color: var(--label); }
+    table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #E5E7EB; border-radius: 8px; overflow: hidden; }
+    thead th {
+      background: #F0FDF4;
+      color: #1A4731;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 2px solid #E5E7EB;
+    }
+    tbody td {
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #4B5563;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    tbody tr:nth-child(even) { background: #F9FAFB; }
+    tbody tr:hover { background: #F0FDF4; }
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .badge-green { background: #16A34A; color: white; }
+    .badge-yellow { background: #EAB308; color: #0D0D0D; }
+    .badge-red { background: #DC2626; color: white; }
+    .badge-gray { background: #9CA3AF; color: white; }
+    .overdue-severe { color: #DC2626; font-weight: 600; }
+    .overdue-mild { color: #EAB308; font-weight: 600; }
+
+    /* Client project cards */
+    .client-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 12px;
+    }
+    .client-card {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .client-card-header {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .client-card-header h3 { font-size: 16px; font-weight: 700; color: #1A4731; }
+    .client-card-body { padding: 16px 20px; }
+    .client-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+    .client-meta dt { color: #6B7280; font-weight: 500; }
+    .client-meta dd { color: #4B5563; font-weight: 600; margin: 0; }
+    .client-tasks { list-style: none; padding: 0; margin: 0; }
+    .client-tasks li {
+      padding: 6px 0;
+      font-size: 13px;
+      color: #4B5563;
+      border-bottom: 1px solid #F3F4F6;
+      display: flex;
+      gap: 8px;
+    }
+    .client-tasks li:last-child { border-bottom: none; }
+    .task-num {
+      color: #1A4731;
+      font-weight: 700;
+      min-width: 18px;
+    }
+    .milestone-bar {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #E5E7EB;
+    }
+    .milestone-bar h4 { font-size: 11px; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .milestone-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #4B5563;
+      padding: 3px 0;
+    }
+    .milestone-date { color: #6B7280; font-weight: 500; }
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .dot-green { background: #16A34A; }
+    .dot-yellow { background: #EAB308; }
+    .dot-red { background: #DC2626; }
+    .dot-gray { background: #9CA3AF; }
+
+    footer {
+      background: #FFFBF0;
+      border-top: 1px solid #E5E7EB;
+      text-align: center;
+      padding: 24px;
+      margin-top: 40px;
+    }
+    footer p { font-size: 12px; color: #6B7280; }
     .footer-note { margin-top: 4px; }
     @media (max-width: 768px) {
       .summary-cards { grid-template-columns: repeat(2, 1fr); }
+      .client-cards { grid-template-columns: 1fr; }
       .header-content { flex-direction: column; text-align: center; gap: 12px; }
       .timestamp { text-align: center; }
     }
@@ -81,7 +201,7 @@
       <span class="card-label">Open tasks</span>
     </div>
     <div class="card">
-      <span class="card-number">38</span>
+      <span class="card-number warn">38</span>
       <span class="card-label">Overdue</span>
     </div>
     <div class="card">
@@ -90,309 +210,548 @@
     </div>
   </section>
 
+  <!-- Client project cards -->
   <section class="section">
-    <h2>Client health</h2>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Client</th>
-            <th>Phase</th>
-            <th>Health</th>
-            <th>Open</th>
-            <th>Overdue</th>
-            <th>This week</th>
-            <th>Completed</th>
-            <th>Next milestone</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>CCV</strong></td>
-            <td>60-Day Assessment (Week 9)</td>
-            <td><span class="badge badge-yellow">72</span></td>
-            <td>34</td>
-            <td>7</td>
-            <td>8</td>
-            <td>15</td>
-            <td>AI Training On-Site Mar 23</td>
-          </tr>
-          <tr>
-            <td><strong>VQH</strong></td>
-            <td>Year 2 - Week 2</td>
-            <td><span class="badge badge-yellow">65</span></td>
-            <td>48</td>
-            <td>12</td>
-            <td>6</td>
-            <td>54</td>
-            <td>Data Transfer Target Mar 19</td>
-          </tr>
-          <tr>
-            <td><strong>Real You</strong></td>
-            <td>30-Day Assessment (Week 2)</td>
-            <td><span class="badge badge-green">85</span></td>
-            <td>21</td>
-            <td>2</td>
-            <td>4</td>
-            <td>3</td>
-            <td>Brand Guide V1 Mar 18</td>
-          </tr>
-          <tr>
-            <td><strong>VQ Inc</strong></td>
-            <td>Pre-Contract Assessment</td>
-            <td><span class="badge badge-green">80</span></td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>90-Day Proposal Mar 11</td>
-          </tr>
-          <tr>
-            <td><strong>AIDM Internal</strong></td>
-            <td>Ongoing Operations</td>
-            <td><span class="badge badge-yellow">55</span></td>
-            <td>63</td>
-            <td>17</td>
-            <td>5</td>
-            <td>18</td>
-            <td>Sally Bot Launch Mar 16</td>
-          </tr>
-        </tbody>
-      </table>
+    <h2>Client projects</h2>
+    <div class="client-cards">
+
+      <!-- CCV -->
+      <div class="client-card">
+        <div class="client-card-header">
+          <h3>CCV - Center for Christian Virtue</h3>
+          <span class="badge badge-yellow">72</span>
+        </div>
+        <div class="client-card-body">
+          <dl class="client-meta">
+            <dt>Phase</dt>
+            <dd>60-Day Assessment (Week 9)</dd>
+            <dt>Contract</dt>
+            <dd><span class="status-dot dot-green"></span>Signed + paid</dd>
+            <dt>Last report</dt>
+            <dd>Week 9 (Mar 9)</dd>
+            <dt>Key contact</dt>
+            <dd>Matt Stiers (COO)</dd>
+          </dl>
+          <h4 style="font-size: 12px; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Top priorities</h4>
+          <ul class="client-tasks">
+            <li><span class="task-num">1</span> On-site training visit Mar 23-25 (confirmed)</li>
+            <li><span class="task-num">2</span> Build 3-tier dashboard (exec, dept, board)</li>
+            <li><span class="task-num">3</span> Finalize interactive org chart for board</li>
+          </ul>
+          <div class="milestone-bar">
+            <h4>Milestones</h4>
+            <div class="milestone-item"><span>Assessment meetings 6-10</span><span class="milestone-date">By Mar 18</span></div>
+            <div class="milestone-item"><span>On-site visit Columbus</span><span class="milestone-date">Mar 23-25</span></div>
+            <div class="milestone-item"><span>Build phase begins</span><span class="milestone-date">Apr 2026</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VQH -->
+      <div class="client-card">
+        <div class="client-card-header">
+          <h3>VQH - ViaQuest Hospice</h3>
+          <span class="badge badge-yellow">65</span>
+        </div>
+        <div class="client-card-body">
+          <dl class="client-meta">
+            <dt>Phase</dt>
+            <dd>Year 2 - Week 2</dd>
+            <dt>Contract</dt>
+            <dd><span class="status-dot dot-green"></span>Signed + paid</dd>
+            <dt>Last report</dt>
+            <dd>Week 2 (Mar 9)</dd>
+            <dt>Key contact</dt>
+            <dd>Cindy Curry (Ops)</dd>
+          </dl>
+          <h4 style="font-size: 12px; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Top priorities</h4>
+          <ul class="client-tasks">
+            <li><span class="task-num">1</span> Training dashboard V1 rollout (90% done)</li>
+            <li><span class="task-num">2</span> Virtual database build (Homecare Homebase)</li>
+            <li><span class="task-num">3</span> Gamification points system + leaderboard</li>
+          </ul>
+          <div class="milestone-bar">
+            <h4>Milestones</h4>
+            <div class="milestone-item"><span>Training V1: Onboarding + Liaison</span><span class="milestone-date">Mar 2026</span></div>
+            <div class="milestone-item"><span>VQ Inc. demo using VQH portal</span><span class="milestone-date">Mar 11</span></div>
+            <div class="milestone-item"><span>Homebase data integration</span><span class="milestone-date">TBD</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real You -->
+      <div class="client-card">
+        <div class="client-card-header">
+          <h3>Real You</h3>
+          <span class="badge badge-green">85</span>
+        </div>
+        <div class="client-card-body">
+          <dl class="client-meta">
+            <dt>Phase</dt>
+            <dd>Phase 1 - 30-Day Assessment (Week 2)</dd>
+            <dt>Contract</dt>
+            <dd><span class="status-dot dot-green"></span>Signed + paid</dd>
+            <dt>Last report</dt>
+            <dd>Week 2 (Mar 9)</dd>
+            <dt>Key contact</dt>
+            <dd>Mark Brumbaugh / Matthew Jones</dd>
+          </dl>
+          <h4 style="font-size: 12px; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Top priorities</h4>
+          <ul class="client-tasks">
+            <li><span class="task-num">1</span> IP transfer + data center migration</li>
+            <li><span class="task-num">2</span> Brand strategy + domain (realu.ai)</li>
+            <li><span class="task-num">3</span> Executive AI training for Mark + Rachel</li>
+          </ul>
+          <div class="milestone-bar">
+            <h4>Milestones</h4>
+            <div class="milestone-item"><span>IP transfer complete</span><span class="milestone-date">Week of Mar 10</span></div>
+            <div class="milestone-item"><span>Brand book + design direction</span><span class="milestone-date">By Mar 31</span></div>
+            <div class="milestone-item"><span>Columbus visit (Keith)</span><span class="milestone-date">Mar 22-23</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ViaQuest Inc. -->
+      <div class="client-card">
+        <div class="client-card-header">
+          <h3>VQI - ViaQuest Inc.</h3>
+          <span class="badge badge-gray">Pre-contract</span>
+        </div>
+        <div class="client-card-body">
+          <dl class="client-meta">
+            <dt>Phase</dt>
+            <dd>Pre-contract (60-Day Assessment)</dd>
+            <dt>Contract</dt>
+            <dd><span class="status-dot dot-yellow"></span>Pending signature</dd>
+            <dt>Last report</dt>
+            <dd>n/a</dd>
+            <dt>Key contact</dt>
+            <dd>Michael Bell / Ann Nash</dd>
+          </dl>
+          <h4 style="font-size: 12px; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Top priorities</h4>
+          <ul class="client-tasks">
+            <li><span class="task-num">1</span> Get assessment agreement signed</li>
+            <li><span class="task-num">2</span> Training platform demo for Ann + Gabrielle</li>
+            <li><span class="task-num">3</span> Scope 3 departments (BH, Accounting, Backend)</li>
+          </ul>
+          <div class="milestone-bar">
+            <h4>Milestones</h4>
+            <div class="milestone-item"><span>Platform demo</span><span class="milestone-date">Mar 11</span></div>
+            <div class="milestone-item"><span>Send agreement to Michael</span><span class="milestone-date">Week of Mar 16</span></div>
+            <div class="milestone-item"><span>Keith in-person + sign</span><span class="milestone-date">Mar 25</span></div>
+            <div class="milestone-item"><span>Assessment launch</span><span class="milestone-date">Apr 1</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
+  <!-- AIDM Internal -->
+  <section class="section">
+    <h2>Internal projects</h2>
+    <div class="client-cards">
+      <div class="client-card" style="grid-column: 1 / -1;">
+        <div class="client-card-header">
+          <h3>AIDM / Cairo / Ball Four</h3>
+          <span class="badge badge-yellow">55</span>
+        </div>
+        <div class="client-card-body" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+          <div>
+            <h4 style="font-size: 13px; font-weight: 700; color: #1A4731; margin-bottom: 8px;">AIDM</h4>
+            <ul class="client-tasks">
+              <li><span class="task-num">1</span> Add Sally to Google Chat</li>
+              <li><span class="task-num">2</span> Portal refresh (less "appy", more boutique)</li>
+              <li><span class="task-num">3</span> Command center on portal for clients</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size: 13px; font-weight: 700; color: #1A4731; margin-bottom: 8px;">Cairo Data Solutions</h4>
+            <ul class="client-tasks">
+              <li><span class="task-num">1</span> Launch website (cairocapitalus domain)</li>
+              <li><span class="task-num">2</span> Create LinkedIn account</li>
+              <li><span class="task-num">3</span> Email Rich re: trademark</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size: 13px; font-weight: 700; color: #1A4731; margin-bottom: 8px;">Ball Four Foundation</h4>
+            <ul class="client-tasks">
+              <li><span class="task-num">1</span> Remove Purpose page from site</li>
+              <li><span class="task-num">2</span> Reduce articles to 2/week</li>
+              <li><span class="task-num">3</span> Add state sorting to events calendar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team workload -->
   <section class="section">
     <h2>Team workload</h2>
     <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Team member</th>
-            <th>Role</th>
-            <th>Open tasks</th>
-            <th>Overdue</th>
-            <th>This week</th>
-            <th>CCV</th>
-            <th>VQH</th>
-            <th>Real You</th>
-            <th>VQ Inc</th>
-            <th>Internal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Keith Coe</strong></td>
-            <td>CEO</td>
-            <td>10</td>
-            <td>2</td>
-            <td>2</td>
-            <td>5</td>
-            <td>0</td>
-            <td>4</td>
-            <td>0</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td><strong>Samina</strong></td>
-            <td>Operations/PM</td>
-            <td>33</td>
-            <td>8</td>
-            <td>6</td>
-            <td>12</td>
-            <td>10</td>
-            <td>2</td>
-            <td>1</td>
-            <td>8</td>
-          </tr>
-          <tr>
-            <td><strong>Vamsi</strong></td>
-            <td>Dev Lead</td>
-            <td>15</td>
-            <td>8</td>
-            <td>2</td>
-            <td>0</td>
-            <td>12</td>
-            <td>0</td>
-            <td>0</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td><strong>Alamin</strong></td>
-            <td>Frontend Dev</td>
-            <td>2</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td><strong>Sanskriti</strong></td>
-            <td>Design</td>
-            <td>33</td>
-            <td>4</td>
-            <td>6</td>
-            <td>5</td>
-            <td>16</td>
-            <td>5</td>
-            <td>0</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td><strong>Shubakar</strong></td>
-            <td>Portal/Automation</td>
-            <td>18</td>
-            <td>5</td>
-            <td>2</td>
-            <td>7</td>
-            <td>3</td>
-            <td>5</td>
-            <td>0</td>
-            <td>3</td>
-          </tr>
-        </tbody>
-      </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Team member</th>
+          <th>Role</th>
+          <th>Open tasks</th>
+          <th>Overdue</th>
+          <th>This week</th>
+          <th>CCV</th>
+          <th>VQH</th>
+          <th>Real You</th>
+          <th>VQ Inc</th>
+          <th>Internal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Keith Coe</strong></td>
+          <td>CEO</td>
+          <td>10</td>
+          <td>2</td>
+          <td>2</td>
+          <td>5</td>
+          <td>0</td>
+          <td>4</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>Samina</strong></td>
+          <td>Operations/PM</td>
+          <td>33</td>
+          <td>8</td>
+          <td>6</td>
+          <td>12</td>
+          <td>10</td>
+          <td>2</td>
+          <td>1</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td><strong>Vamsi</strong></td>
+          <td>Dev Lead</td>
+          <td>15</td>
+          <td>8</td>
+          <td>2</td>
+          <td>0</td>
+          <td>12</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>Alamin</strong></td>
+          <td>Frontend Dev</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>Sanskriti</strong></td>
+          <td>Design</td>
+          <td>33</td>
+          <td>4</td>
+          <td>6</td>
+          <td>5</td>
+          <td>16</td>
+          <td>5</td>
+          <td>0</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td><strong>Shubakar</strong></td>
+          <td>Portal/Automation</td>
+          <td>18</td>
+          <td>5</td>
+          <td>2</td>
+          <td>7</td>
+          <td>3</td>
+          <td>5</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
   </section>
 
-  <section class="section">
-    <h2>Completed this week (Mar 3-9)</h2>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-            <th>Client</th>
-            <th>Completed by</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Run weekly client reports</td>
-            <td>AIDM</td>
-            <td>Samina</td>
-            <td>Mar 9</td>
-          </tr>
-          <tr>
-            <td>Update Google Business Profile Monthly</td>
-            <td>VQH</td>
-            <td>Sanskriti</td>
-            <td>Mar 9</td>
-          </tr>
-          <tr>
-            <td>Create Clickable Flow Prototype</td>
-            <td>VQH</td>
-            <td>Sanskriti</td>
-            <td>Mar 9</td>
-          </tr>
-          <tr>
-            <td>VQH Social and Recruitment Shift</td>
-            <td>VQH</td>
-            <td>Sanskriti</td>
-            <td>Mar 9</td>
-          </tr>
-          <tr>
-            <td>Adjust Social Media Strategy to 3:1 Hiring Ratio</td>
-            <td>VQH</td>
-            <td>Sanskriti</td>
-            <td>Mar 9</td>
-          </tr>
-          <tr>
-            <td>Update Cairo Capital Website</td>
-            <td>AIDM</td>
-            <td>Sanskriti</td>
-            <td>Mar 9</td>
-          </tr>
-          <tr>
-            <td>Update Sally AI agent capabilities</td>
-            <td>AIDM</td>
-            <td>Samina</td>
-            <td>Mar 9</td>
-          </tr>
-          <tr>
-            <td>Develop comprehensive Board Member profiles</td>
-            <td>CCV</td>
-            <td>Shubakar</td>
-            <td>Mar 7</td>
-          </tr>
-          <tr>
-            <td>Create an Org chart for CCV</td>
-            <td>CCV</td>
-            <td>Shubakar</td>
-            <td>Mar 7</td>
-          </tr>
-          <tr>
-            <td>Follow up with Vanessa - scenarios and tools list</td>
-            <td>VQH</td>
-            <td>Samina</td>
-            <td>Mar 7</td>
-          </tr>
-          <tr>
-            <td>AIDM Website Audit</td>
-            <td>AIDM</td>
-            <td>Sanskriti</td>
-            <td>Mar 7</td>
-          </tr>
-          <tr>
-            <td>Clean-Up Org Chart for CCV</td>
-            <td>CCV</td>
-            <td>Sanskriti</td>
-            <td>Mar 6</td>
-          </tr>
-          <tr>
-            <td>Edit Master Content Document and GPT for VQH</td>
-            <td>VQH</td>
-            <td>Samina</td>
-            <td>Mar 6</td>
-          </tr>
-          <tr>
-            <td>Design Hospice Eligibility Booklet</td>
-            <td>VQH</td>
-            <td>Sanskriti</td>
-            <td>Mar 6</td>
-          </tr>
-          <tr>
-            <td>Check all tools we are using</td>
-            <td>AIDM</td>
-            <td>Alamin</td>
-            <td>Mar 6</td>
-          </tr>
-          <tr>
-            <td>Design B4F Foundation Dashboard</td>
-            <td>B4F</td>
-            <td>Sanskriti</td>
-            <td>Mar 6</td>
-          </tr>
-          <tr>
-            <td>Document SGO Scholarship Disbursement process</td>
-            <td>CCV</td>
-            <td>Samina</td>
-            <td>Mar 5</td>
-          </tr>
-          <tr>
-            <td>Modify automation schedules</td>
-            <td>AIDM</td>
-            <td>Shubakar</td>
-            <td>Mar 5</td>
-          </tr>
-          <tr>
-            <td>Create PRD - CCV SGO Platform</td>
-            <td>CCV</td>
-            <td>Samina</td>
-            <td>Mar 5</td>
-          </tr>
-          <tr>
-            <td>Review and finalize IP protection language</td>
-            <td>Real You</td>
-            <td>Samina</td>
-            <td>Mar 4</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Part 1: How Sally works -->
+  <section class="section" style="margin-top: 48px;">
+    <div style="background: #1A4731; color: white; padding: 20px 32px; border-radius: 8px 8px 0 0;">
+      <h2 style="font-size: 20px; font-weight: 700; color: white; margin: 0;">How Sally works</h2>
+      <p style="font-size: 13px; color: #D4A843; margin-top: 4px;">The daily workflow that keeps all projects in sync</p>
+    </div>
+    <div style="background: white; border: 1px solid #E5E7EB; border-top: none; border-radius: 0 0 8px 8px; padding: 32px;">
+
+      <!-- Intro -->
+      <p style="font-size: 14px; color: #4B5563; margin-bottom: 24px; line-height: 1.6;">
+        Sally is AIDM's AI project manager. Every morning, Samina runs <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px; font-size: 13px;">/sally sync</code> and the system handles everything in 4 steps. Sally orchestrates 5 project agents that each own a client's files, plus connects to Asana for task management.
+      </p>
+
+      <!-- Step 1 -->
+      <div style="display: grid; grid-template-columns: 56px 1fr; gap: 16px; margin-bottom: 28px;">
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; background: #1A4731; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 700; margin: 0 auto;">1</div>
+          <div style="width: 2px; height: 100%; background: #E5E7EB; margin: 8px auto 0;"></div>
+        </div>
+        <div>
+          <div style="font-size: 16px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">Sally files meeting notes</div>
+          <div style="font-size: 11px; color: #16A34A; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Automatic - no approval needed</div>
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5; margin-bottom: 10px;">
+            Sally scans the <code>_Meeting notes/</code> folder for new transcripts. She reads each one, classifies it by client (CCV, VQH, Real You, etc.), splits multi-client meetings, and files the content into the right project records.
+          </p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/process-meeting-notes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="display: grid; grid-template-columns: 56px 1fr; gap: 16px; margin-bottom: 28px;">
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; background: #D4A843; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 700; margin: 0 auto;">2</div>
+          <div style="width: 2px; height: 100%; background: #E5E7EB; margin: 8px auto 0;"></div>
+        </div>
+        <div>
+          <div style="font-size: 16px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">Project agents update documents</div>
+          <div style="font-size: 11px; color: #16A34A; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Automatic - no approval needed</div>
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5; margin-bottom: 10px;">
+            Sally spawns each project agent to process the newly filed notes. Each agent reads the notes and updates its own spreadsheets, trackers, business context docs, and knowledge bases.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 10px;">
+            <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px; text-align: center;">
+              <div style="font-weight: 700; color: #1A4731; font-size: 12px;">@CCV</div>
+              <div style="font-size: 10px; color: #6B7280;">Tracker, context, PRD</div>
+            </div>
+            <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px; text-align: center;">
+              <div style="font-weight: 700; color: #1A4731; font-size: 12px;">@VQH</div>
+              <div style="font-size: 10px; color: #6B7280;">Master tracker, context</div>
+            </div>
+            <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px; text-align: center;">
+              <div style="font-weight: 700; color: #1A4731; font-size: 12px;">@RealYou</div>
+              <div style="font-size: 10px; color: #6B7280;">Context, architecture</div>
+            </div>
+            <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px; text-align: center;">
+              <div style="font-weight: 700; color: #1A4731; font-size: 12px;">@VQInc</div>
+              <div style="font-size: 10px; color: #6B7280;">Context, knowledge</div>
+            </div>
+            <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px; text-align: center;">
+              <div style="font-weight: 700; color: #1A4731; font-size: 12px;">@AIDM</div>
+              <div style="font-size: 10px; color: #6B7280;">Internal tracker</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/update-ccv</span>
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/update-vqh</span>
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/update-realyou</span>
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/update-vqinc</span>
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/update-aidm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="display: grid; grid-template-columns: 56px 1fr; gap: 16px; margin-bottom: 28px;">
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; background: #16A34A; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 700; margin: 0 auto;">3</div>
+          <div style="width: 2px; height: 100%; background: #E5E7EB; margin: 8px auto 0;"></div>
+        </div>
+        <div>
+          <div style="font-size: 16px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">Samina reviews the changelog</div>
+          <div style="font-size: 11px; color: #D4A843; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Human review - one interaction point</div>
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5; margin-bottom: 10px;">
+            Sally presents a combined changelog of everything that was filed and updated. Samina reviews it, flags anything wrong, and Sally fixes it. This is the only approval step in the entire sync.
+          </p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/sally audit</span>
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/reflect</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="display: grid; grid-template-columns: 56px 1fr; gap: 16px;">
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; background: #6B7280; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 700; margin: 0 auto;">4</div>
+        </div>
+        <div>
+          <div style="font-size: 16px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">Asana sync</div>
+          <div style="font-size: 11px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Part auto, part approval</div>
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5; margin-bottom: 10px;">
+            Sally patrols all Asana projects for overdue tasks (7+ days) and posts follow-up comments automatically. Then she extracts action items from the meeting notes, searches for existing tasks (subtask-first rule), and proposes a batch of new tasks, subtasks, and completions. Samina approves the batch before it goes live.
+          </p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/update-asana-status</span>
+            <span style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #1A4731; font-family: ui-monospace, monospace;">/monday-emails</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other commands -->
+      <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid #E5E7EB;">
+        <h4 style="font-size: 13px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">Other commands (available to everyone)</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/sally</code> Main menu</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/sally status</code> Health check</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/sally team</code> Team workload</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/create-pdf</code> PDFs</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/create-docx</code> Word docs</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/create-pptx</code> Presentations</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/create-xlsx</code> Spreadsheets</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/create-weekly-report</code> Client PDFs</div>
+          <div style="font-size: 12px; color: #4B5563;"><code style="color: #1A4731; font-weight: 600;">/sally dashboard</code> Refresh this page</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part 2: Your personal AI agent -->
+  <section class="section" style="margin-top: 32px;">
+    <div style="background: #1A4731; color: white; padding: 20px 32px; border-radius: 8px 8px 0 0;">
+      <h2 style="font-size: 20px; font-weight: 700; color: white; margin: 0;">Your personal AI agent</h2>
+      <p style="font-size: 13px; color: #D4A843; margin-top: 4px;">Every team member gets their own AI assistant</p>
+    </div>
+    <div style="background: white; border: 1px solid #E5E7EB; border-top: none; border-radius: 0 0 8px 8px; padding: 32px;">
+
+      <p style="font-size: 14px; color: #4B5563; margin-bottom: 24px; line-height: 1.6;">
+        Each team member has a personal agent that lives in their <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px; font-size: 13px;">_Team/YourName/</code> folder. It knows your role, your active projects, and your working style. It connects to your tools and can answer questions about any project you work on.
+      </p>
+
+      <!-- 6 agent cards -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+
+        <div style="background: #FFFBF0; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 15px; margin-bottom: 2px;">@Keith</div>
+          <div style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">CEO - All clients</div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; color: #4B5563; line-height: 1.6;">
+            <li>Strategic client overview</li>
+            <li>Meeting prep and talking points</li>
+            <li>Revenue pipeline tracking</li>
+            <li>Board presentation drafts</li>
+          </ul>
+        </div>
+
+        <div style="background: #FFFBF0; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 15px; margin-bottom: 2px;">@Samina</div>
+          <div style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Ops Manager - All clients</div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; color: #4B5563; line-height: 1.6;">
+            <li>Daily priorities from Asana</li>
+            <li>Gmail drafts and calendar prep</li>
+            <li>Client communication drafts</li>
+            <li>Meeting prep and follow-ups</li>
+          </ul>
+        </div>
+
+        <div style="background: #FFFBF0; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 15px; margin-bottom: 2px;">@Vamsi</div>
+          <div style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Developer - VQH, VQI</div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; color: #4B5563; line-height: 1.6;">
+            <li>Open tasks and sprint planning</li>
+            <li>Portal development context</li>
+            <li>Technical decision history</li>
+            <li>Integration specs lookup</li>
+          </ul>
+        </div>
+
+        <div style="background: #FFFBF0; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 15px; margin-bottom: 2px;">@Sanskriti</div>
+          <div style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Design - All clients</div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; color: #4B5563; line-height: 1.6;">
+            <li>Design tasks and deadlines</li>
+            <li>Brand palettes per client</li>
+            <li>Social media content planning</li>
+            <li>Canva design access</li>
+          </ul>
+        </div>
+
+        <div style="background: #FFFBF0; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 15px; margin-bottom: 2px;">@Shubakar</div>
+          <div style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Portal - RealYou, CCV, Automations</div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; color: #4B5563; line-height: 1.6;">
+            <li>Portal feature tasks</li>
+            <li>Dashboard build priorities</li>
+            <li>Automation schedules</li>
+            <li>Cross-client portal context</li>
+          </ul>
+        </div>
+
+        <div style="background: #FFFBF0; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 15px; margin-bottom: 2px;">@Alamin</div>
+          <div style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Frontend - VQH, CCV, AIDM</div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; color: #4B5563; line-height: 1.6;">
+            <li>Website tasks and SEO</li>
+            <li>WordPress development</li>
+            <li>Frontend bug tracking</li>
+            <li>Cairo/B4F site updates</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- How agents communicate -->
+      <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">How agents talk to each other</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 13px; color: #4B5563; line-height: 1.6;">
+          <div>
+            <div style="font-weight: 600; color: #1A4731; margin-bottom: 4px;">Shared project files</div>
+            All agents read from the same Google Shared Drive. When @CCV updates a tracker, @Samina can see it immediately. Meeting notes filed by Sally flow down to every project agent.
+          </div>
+          <div>
+            <div style="font-weight: 600; color: #1A4731; margin-bottom: 4px;">Shared Asana workspace</div>
+            Every agent connects to the same Asana workspace. Your personal agent can pull your tasks, and Sally can post status updates and follow-ups across all projects.
+          </div>
+          <div>
+            <div style="font-weight: 600; color: #1A4731; margin-bottom: 4px;">Shared playbook</div>
+            Sally learns from every sync. Lessons are stored in a shared playbook that all agents read before executing. If Sally learns a pattern from CCV, @VQH benefits from it too.
+          </div>
+          <div>
+            <div style="font-weight: 600; color: #1A4731; margin-bottom: 4px;">Sally as coordinator</div>
+            Your personal agent can answer questions about any project you're assigned to. If it needs cross-client data, it reads the same files Sally maintains. No information gets siloed.
+          </div>
+        </div>
+      </div>
+
+      <!-- Connected tools -->
+      <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">Connected tools (automatic via MCP)</h4>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-size: 12px; color: #4B5563;">
+          <div><span style="font-weight: 600; color: #1A4731;">Gmail</span> - Read, search, draft emails</div>
+          <div><span style="font-weight: 600; color: #1A4731;">Google Calendar</span> - View, create events</div>
+          <div><span style="font-weight: 600; color: #1A4731;">Asana</span> - Tasks, projects, status</div>
+          <div><span style="font-weight: 600; color: #1A4731;">Google Drive</span> - Docs, Sheets, Slides</div>
+          <div><span style="font-weight: 600; color: #1A4731;">Google Chat</span> - Messages, spaces</div>
+          <div><span style="font-weight: 600; color: #1A4731;">Canva</span> - Design, brand kits</div>
+          <div><span style="font-weight: 600; color: #1A4731;">Web search</span> - Research, lookups</div>
+          <div><span style="font-weight: 600; color: #1A4731;">Web scraping</span> - Data extraction</div>
+        </div>
+      </div>
+
+      <!-- Setup steps -->
+      <div style="border: 2px solid #D4A843; border-radius: 8px; padding: 20px 24px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">Set up your agent (5 minutes)</h4>
+        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 8px 12px; font-size: 13px; color: #4B5563; line-height: 1.6;">
+          <div style="font-weight: 700; color: #D4A843; text-align: center;">1.</div>
+          <div>Open Claude (app or VS Code extension) while connected to the AIDM Shared Drive</div>
+          <div style="font-weight: 700; color: #D4A843; text-align: center;">2.</div>
+          <div>Navigate to your team folder: <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px;">_Team/YourName/</code></div>
+          <div style="font-weight: 700; color: #D4A843; text-align: center;">3.</div>
+          <div>Run <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px;">/setup-assistant</code> and answer the questions (work hours, tools, preferences)</div>
+          <div style="font-weight: 700; color: #D4A843; text-align: center;">4.</div>
+          <div>Done. Your agent loads automatically every time you open Claude in that folder.</div>
+        </div>
+        <p style="font-size: 12px; color: #6B7280; margin-top: 12px;">
+          Try asking your agent: "What are my open tasks?" or "Help me draft an email to [client]" or "What happened in the last CCV meeting?"
+        </p>
+      </div>
+
     </div>
   </section>
 
