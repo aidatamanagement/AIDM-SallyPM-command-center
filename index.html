@@ -755,6 +755,122 @@
     </div>
   </section>
 
+  <!-- Vision: What we want Sally to do -->
+  <section class="section" style="margin-top: 32px;">
+    <div style="background: #1A4731; color: white; padding: 20px 32px; border-radius: 8px 8px 0 0;">
+      <h2 style="font-size: 20px; font-weight: 700; color: white; margin: 0;">What we want Sally to do</h2>
+      <p style="font-size: 13px; color: #D4A843; margin-top: 4px;">The vision for Sally as a fully autonomous team member</p>
+    </div>
+    <div style="background: white; border: 1px solid #E5E7EB; border-top: none; border-radius: 0 0 8px 8px; padding: 32px;">
+
+      <!-- Current state -->
+      <div style="background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px;">
+        <div style="font-size: 13px; font-weight: 700; color: #92400E; margin-bottom: 6px;">Where Sally is today</div>
+        <p style="font-size: 13px; color: #78350F; line-height: 1.5; margin: 0;">
+          Sally runs on-demand when Samina opens Claude and types a command. She cannot run on her own, respond to messages, or monitor anything in real time. Every action requires a human to start it. The goal below is to make her a 24/7 autonomous team member.
+        </p>
+      </div>
+
+      <!-- Vision items -->
+      <div style="display: grid; gap: 20px;">
+
+        <!-- 1. Auto-process meeting notes -->
+        <div style="display: grid; grid-template-columns: 56px 1fr; gap: 12px;">
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; background: #DC2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; margin: 0 auto;">1</div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #1A4731; margin-bottom: 2px;">Auto-process meeting notes as meetings end</div>
+            <div style="font-size: 11px; color: #DC2626; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Not built yet</div>
+            <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+              When a Google Meet recording lands in the <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px; font-size: 12px;">_Meeting notes/</code> folder, Sally should automatically pick it up, classify it by client, file it into the right project records, and update all related documents (trackers, business context, knowledge bases). No human trigger needed. Today this requires Samina to manually run <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px; font-size: 12px;">/sally sync</code> every morning.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Morning briefing -->
+        <div style="display: grid; grid-template-columns: 56px 1fr; gap: 12px;">
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; background: #DC2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; margin: 0 auto;">2</div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #1A4731; margin-bottom: 2px;">Daily morning briefing to Samina and Keith</div>
+            <div style="font-size: 11px; color: #DC2626; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Not built yet</div>
+            <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+              Every morning (before 8 AM), Sally sends an email or Google Chat message to Samina and Keith with a summary: what happened yesterday, which tasks were completed, what documents were updated, any requests that came in, what's due today, and any blockers. A full daily standup from an AI team member, ready before anyone opens their laptop.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Respond to Google Chat and email -->
+        <div style="display: grid; grid-template-columns: 56px 1fr; gap: 12px;">
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; background: #DC2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; margin: 0 auto;">3</div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #1A4731; margin-bottom: 2px;">Respond to Google Chat and emails addressed to her</div>
+            <div style="font-size: 11px; color: #DC2626; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Not built yet</div>
+            <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+              Team members should be able to message @Sally in Google Chat or email sally@ and get answers: "What's the status of CCV?", "When is Keith's next trip?", "Can you draft an email to Matt about the assessment?". Sally has access to all project files, Asana, Gmail, and Calendar. She should be able to answer in real time, not just when Samina has Claude open.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Create Asana tasks automatically -->
+        <div style="display: grid; grid-template-columns: 56px 1fr; gap: 12px;">
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; background: #DC2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; margin: 0 auto;">4</div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #1A4731; margin-bottom: 2px;">Create and manage Asana tasks from meeting notes</div>
+            <div style="font-size: 11px; color: #DC2626; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Not built yet</div>
+            <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+              After processing meeting notes, Sally should extract action items and automatically create Asana tasks with the right assignee, due date, and project. She should also mark tasks as complete when deliverables are confirmed done, and post follow-up comments on overdue tasks. Today she can propose task batches, but cannot execute them without Samina's manual approval in Claude.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. Self-correction -->
+        <div style="display: grid; grid-template-columns: 56px 1fr; gap: 12px;">
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; background: #DC2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; margin: 0 auto;">5</div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #1A4731; margin-bottom: 2px;">Learn from corrections in real time</div>
+            <div style="font-size: 11px; color: #DC2626; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Not built yet</div>
+            <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+              If someone tells Sally she used the wrong name, filed a note to the wrong client, or made any mistake, she should fix it immediately and remember the correction. Today she has a playbook system that records lessons between sessions, but it requires manual reflection. The goal is: tell her once, she never makes that mistake again, and she fixes the original error on the spot.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Scheduled reports and automations -->
+        <div style="display: grid; grid-template-columns: 56px 1fr; gap: 12px;">
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; background: #DC2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; margin: 0 auto;">6</div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #1A4731; margin-bottom: 2px;">Run scheduled tasks and generate reports on a timer</div>
+            <div style="font-size: 11px; color: #DC2626; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Not built yet</div>
+            <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+              Weekly reports should generate every Monday morning. The command center dashboard should refresh daily. Project health audits should run weekly. Overdue task follow-ups should go out automatically. All of this exists as slash commands today, but someone has to type them. Sally should run them on a schedule, like a cron job with project intelligence.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- The end state -->
+      <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px 24px; margin-top: 24px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 8px;">The end state</h4>
+        <p style="font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Sally becomes a real team member who works 24/7. She processes information as it arrives, keeps everyone informed, handles routine project management tasks autonomously, and learns from feedback. The team interacts with her through Google Chat, email, and Asana, not through a CLI. Samina's role shifts from operating Sally to reviewing her work and making strategic decisions.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
   <footer>
     <p>Generated by Sally, AIDM AI Project Manager</p>
     <p class="footer-note">Data sourced from Asana and project files. Run /dashboard to refresh.</p>
