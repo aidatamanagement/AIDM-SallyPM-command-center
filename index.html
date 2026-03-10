@@ -738,7 +738,7 @@
     <div style="background: white; border: 1px solid #E5E7EB; border-top: none; border-radius: 0 0 8px 8px; padding: 32px;">
 
       <p style="font-size: 14px; color: #4B5563; margin-bottom: 24px; line-height: 1.6;">
-        Each team member has a personal agent that lives in their <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px; font-size: 13px;">_Team/YourName/</code> folder. It knows your role, your active projects, and your working style. It connects to your tools and can answer questions about any project you work on.
+        Each team member has a personal AI agent. It knows your role, your active projects, and your working style. It connects to your tools (Gmail, Calendar, Asana, Drive) and can answer questions about any project you work on. You set it up once in Claude Code, then use it daily through Cowork chat.
       </p>
 
       <!-- 6 agent cards -->
@@ -852,19 +852,31 @@
 
       <!-- Setup steps -->
       <div style="border: 2px solid #D4A843; border-radius: 8px; padding: 20px 24px;">
-        <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">Set up your agent (5 minutes)</h4>
-        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 8px 12px; font-size: 13px; color: #4B5563; line-height: 1.6;">
+        <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">Set up your agent (5 minutes)</h4>
+        <p style="font-size: 12px; color: #6B7280; margin-bottom: 14px;">One-time setup in Claude Code, then daily use through Cowork</p>
+
+        <div style="font-size: 12px; font-weight: 600; color: #1A4731; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Step 1: Create your agent (Claude Code)</div>
+        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 8px 12px; font-size: 13px; color: #4B5563; line-height: 1.6; margin-bottom: 16px;">
           <div style="font-weight: 700; color: #D4A843; text-align: center;">1.</div>
-          <div>Open Claude (app or VS Code extension) while connected to the AIDM Shared Drive</div>
+          <div>Open <strong>Claude Code</strong> (Mac app or VS Code extension)</div>
           <div style="font-weight: 700; color: #D4A843; text-align: center;">2.</div>
-          <div>Navigate to your team folder: <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px;">_Team/YourName/</code></div>
+          <div>Navigate to the AIDM Shared Drive: <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px;">CLIENTS/</code></div>
           <div style="font-weight: 700; color: #D4A843; text-align: center;">3.</div>
           <div>Run <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px;">/setup-assistant</code> and answer the questions (work hours, tools, preferences)</div>
           <div style="font-weight: 700; color: #D4A843; text-align: center;">4.</div>
-          <div>Done. Your agent loads automatically every time you open Claude in that folder.</div>
+          <div>Done. Your agent config is saved and ready to use.</div>
         </div>
+
+        <div style="font-size: 12px; font-weight: 600; color: #1A4731; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Step 2: Chat with your agent daily (Cowork)</div>
+        <div style="display: grid; grid-template-columns: 40px 1fr; gap: 8px 12px; font-size: 13px; color: #4B5563; line-height: 1.6;">
+          <div style="font-weight: 700; color: #D4A843; text-align: center;">1.</div>
+          <div>Open <strong>Cowork</strong> and start a new chat in the <code style="background: #F0FDF4; padding: 2px 6px; border-radius: 3px;">CLIENTS/</code> folder</div>
+          <div style="font-weight: 700; color: #D4A843; text-align: center;">2.</div>
+          <div>Your agent loads automatically and knows who you are</div>
+        </div>
+
         <p style="font-size: 12px; color: #6B7280; margin-top: 12px;">
-          Try asking your agent: "What are my open tasks?" or "Help me draft an email to [client]" or "What happened in the last CCV meeting?"
+          Try asking: "What are my open tasks?" or "Help me draft an email to Matt" or "What happened in the last CCV meeting?"
         </p>
       </div>
 
