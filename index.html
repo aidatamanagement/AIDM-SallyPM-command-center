@@ -890,18 +890,158 @@
         </div>
       </div>
 
-      <!-- Testing week -->
-      <div style="background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 8px; padding: 16px 20px; margin-top: 20px;">
-        <div style="font-size: 13px; font-weight: 700; color: #92400E; margin-bottom: 6px;">This week: testing your agent</div>
-        <p style="font-size: 13px; color: #78350F; line-height: 1.5; margin: 0 0 8px 0;">
-          Everyone is expected to spend time this week testing @Sally and the project agents through Cowork. Try different questions, test the tools, push the limits. At the end of the week, send Samina an email or message with:
+    </div>
+  </section>
+
+  <!-- Part 3: System overview -->
+  <section class="section" style="margin-top: 32px;">
+    <div style="background: #1A4731; color: white; padding: 20px 32px; border-radius: 8px 8px 0 0;">
+      <h2 style="font-size: 20px; font-weight: 700; color: white; margin: 0;">System overview</h2>
+      <p style="font-size: 13px; color: #D4A843; margin-top: 4px;">What Sally is, what she can do, and where we're headed</p>
+    </div>
+    <div style="background: white; border: 1px solid #E5E7EB; border-top: none; border-radius: 0 0 8px 8px; padding: 32px;">
+
+      <!-- By the numbers -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;">
+        <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: #1A4731;">12</div>
+          <div style="font-size: 12px; color: #6B7280; margin-top: 2px;">AI agents</div>
+        </div>
+        <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: #1A4731;">27</div>
+          <div style="font-size: 12px; color: #6B7280; margin-top: 2px;">slash commands</div>
+        </div>
+        <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: #1A4731;">33</div>
+          <div style="font-size: 12px; color: #6B7280; margin-top: 2px;">playbook lessons</div>
+        </div>
+        <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: #1A4731;">4</div>
+          <div style="font-size: 12px; color: #6B7280; margin-top: 2px;">command tiers</div>
+        </div>
+      </div>
+
+      <!-- Agent architecture -->
+      <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">Agent architecture</h4>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+        <div style="background: #FFFBF0; border: 1px solid #D4A843; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #D4A843; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Orchestrator (1)</div>
+          <div style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">@Sally</div>
+          <p style="font-size: 12px; color: #4B5563; line-height: 1.5; margin: 0;">Manages meeting notes, document generation, cross-client reporting, team coordination, and Asana reconciliation. Runs the morning sync pipeline. Delegates client-specific work to project agents.</p>
+        </div>
+        <div style="background: #F0FDF4; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Project agents (5)</div>
+          <div style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">@CCV @VQH @VQInc @AIDM @RealYou</div>
+          <p style="font-size: 12px; color: #4B5563; line-height: 1.5; margin: 0;">Each project agent owns one client's files. They update trackers, answer project-specific questions, and maintain business context docs. Scoped to their client folder only.</p>
+        </div>
+        <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 700; color: #1A4731; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Team agents (6)</div>
+          <div style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">@Keith @Samina @Vamsi @Alamin @Sanskriti @Shubakar</div>
+          <p style="font-size: 12px; color: #4B5563; line-height: 1.5; margin: 0;">Personal AI assistants for each team member. Pull Asana tasks, answer questions about assigned projects, prep for meetings, and draft communications.</p>
+        </div>
+      </div>
+
+      <!-- What's working -->
+      <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">What's working</h4>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+        <div style="border-left: 3px solid #16A34A; padding-left: 16px;">
+          <div style="font-size: 13px; font-weight: 600; color: #1A4731; margin-bottom: 4px;">Morning sync pipeline</div>
+          <p style="font-size: 12px; color: #4B5563; line-height: 1.5; margin: 0;">Meeting notes flow through classification, filing, project file updates, and Asana reconciliation. Runs daily with Samina reviewing at one approval point.</p>
+        </div>
+        <div style="border-left: 3px solid #16A34A; padding-left: 16px;">
+          <div style="font-size: 13px; font-weight: 600; color: #1A4731; margin-bottom: 4px;">Project agents are well-defined</div>
+          <p style="font-size: 12px; color: #4B5563; line-height: 1.5; margin: 0;">Each client has clear scope, file boundaries, and update playbooks. No overlap between agents. CCV, VQH, AIDM, Real You, and VQ Inc all have dedicated agents.</p>
+        </div>
+        <div style="border-left: 3px solid #16A34A; padding-left: 16px;">
+          <div style="font-size: 13px; font-weight: 600; color: #1A4731; margin-bottom: 4px;">Playbook learning system</div>
+          <p style="font-size: 12px; color: #4B5563; line-height: 1.5; margin: 0;">Sally learns from every execution. 33 lessons captured so far with hit counters and stale pruning. When Sally learns a pattern from CCV, VQH benefits from it too.</p>
+        </div>
+        <div style="border-left: 3px solid #16A34A; padding-left: 16px;">
+          <div style="font-size: 13px; font-weight: 600; color: #1A4731; margin-bottom: 4px;">Samina's agent is fully operational</div>
+          <p style="font-size: 12px; color: #4B5563; line-height: 1.5; margin: 0;">The most capable team agent with full integrations: Gmail, Calendar, Canva, web research, content creation, and meeting prep. Used daily as the model for other team agents.</p>
+        </div>
+      </div>
+
+      <!-- What needs improvement -->
+      <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">What needs improvement</h4>
+      <div style="background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px;">
+        <div style="font-size: 13px; font-weight: 700; color: #92400E; margin-bottom: 8px;">Team agents are underused</div>
+        <p style="font-size: 13px; color: #78350F; line-height: 1.6; margin: 0 0 8px 0;">
+          Only Samina's agent has been set up with real depth. The other 5 team agents (@Keith, @Vamsi, @Alamin, @Sanskriti, @Shubakar) have identity files but none are actively using their agents yet.
         </p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #78350F; line-height: 1.8;">
-          <li>- What worked well</li>
-          <li>- What didn't work or gave wrong answers</li>
-          <li>- What you wish it could do</li>
-          <li>- Any questions or confusion about how to use it</li>
-        </ul>
+        <p style="font-size: 13px; color: #78350F; line-height: 1.6; margin: 0;">
+          <strong>Why this matters:</strong> Each team member could use their agent to check Asana tasks, get context on what they're building, and understand meeting decisions that affect their work. Right now that information only flows through Samina verbally. The agents are ready. The team just needs to start using them.
+        </p>
+      </div>
+
+      <!-- Keith's commands - highlighted -->
+      <div style="border: 2px solid #D4A843; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 4px;">Commands Keith can run right now</h4>
+        <p style="font-size: 12px; color: #6B7280; margin-bottom: 14px;">These work in any @Sally chat session. Just type the command.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div style="background: #F0FDF4; border-radius: 6px; padding: 12px;">
+            <code style="background: #1A4731; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px;">/sally status</code>
+            <p style="font-size: 12px; color: #4B5563; margin: 6px 0 0 0; line-height: 1.4;">Quick health check across all clients. Shows phase, last meeting date, and next key item for CCV, VQH, Real You, and internal projects.</p>
+          </div>
+          <div style="background: #F0FDF4; border-radius: 6px; padding: 12px;">
+            <code style="background: #1A4731; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px;">/sally status ccv</code>
+            <p style="font-size: 12px; color: #4B5563; margin: 6px 0 0 0; line-height: 1.4;">Deep dive into one client. Shows milestones, blockers, team assignments, and recent meeting decisions. Works with ccv, vqh, aidm, or realyou.</p>
+          </div>
+          <div style="background: #F0FDF4; border-radius: 6px; padding: 12px;">
+            <code style="background: #1A4731; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px;">/sally team</code>
+            <p style="font-size: 12px; color: #4B5563; margin: 6px 0 0 0; line-height: 1.4;">Team workload overview. Shows open tasks, overdue count, and primary focus for every team member. Pulled live from Asana.</p>
+          </div>
+          <div style="background: #F0FDF4; border-radius: 6px; padding: 12px;">
+            <code style="background: #1A4731; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px;">/sally dashboard</code>
+            <p style="font-size: 12px; color: #4B5563; margin: 6px 0 0 0; line-height: 1.4;">Refreshes this page with live Asana data. Client health scores, team workload, overdue tasks, and completed work. The all-project executive view.</p>
+          </div>
+          <div style="background: #F0FDF4; border-radius: 6px; padding: 12px;">
+            <code style="background: #1A4731; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px;">/sally what-is [topic]</code>
+            <p style="font-size: 12px; color: #4B5563; margin: 6px 0 0 0; line-height: 1.4;">Ask about any AIDM concept, client, or project. "What is SGO?" "What's our contract with VQH?" "Who is Matt Stiers?" Sally searches project files and answers.</p>
+          </div>
+          <div style="background: #F0FDF4; border-radius: 6px; padding: 12px;">
+            <code style="background: #1A4731; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px;">@Keith what are my priorities?</code>
+            <p style="font-size: 12px; color: #4B5563; margin: 6px 0 0 0; line-height: 1.4;">Your personal agent. Pulls your open Asana tasks, flags overdue items, and gives you a prioritized list. Works in a @Keith chat session.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 27 slash commands by tier -->
+      <h4 style="font-size: 14px; font-weight: 700; color: #1A4731; margin-bottom: 12px;">27 slash commands across 4 tiers</h4>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 600; color: #1A4731; font-size: 13px; margin-bottom: 8px;">Tier 1: Core data pipeline</div>
+          <div style="font-size: 12px; color: #4B5563; line-height: 1.8;">
+            /process-meeting-notes<br>
+            /update-ccv, /update-vqh, /update-aidm<br>
+            /update-realyou, /update-vqinc
+          </div>
+        </div>
+        <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 600; color: #1A4731; font-size: 13px; margin-bottom: 8px;">Tier 2: Orchestration and quality</div>
+          <div style="font-size: 12px; color: #4B5563; line-height: 1.8;">
+            /sally sync, /update-asana<br>
+            /audit-projects, /reflect<br>
+            /dashboard
+          </div>
+        </div>
+        <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 600; color: #1A4731; font-size: 13px; margin-bottom: 8px;">Tier 3: Document generation</div>
+          <div style="font-size: 12px; color: #4B5563; line-height: 1.8;">
+            /create-pdf, /create-docx<br>
+            /create-xlsx, /create-pptx<br>
+            /create-weekly-report
+          </div>
+        </div>
+        <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 600; color: #1A4731; font-size: 13px; margin-bottom: 8px;">Tier 4: Personal productivity</div>
+          <div style="font-size: 12px; color: #4B5563; line-height: 1.8;">
+            /samina (daily assistant)<br>
+            /setup-assistant<br>
+            @[Name] (personal agents)
+          </div>
+        </div>
       </div>
 
     </div>
