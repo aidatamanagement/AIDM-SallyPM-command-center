@@ -7,19 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #f8f9fb; color: #1a1a2e; line-height: 1.6; }
+  html { overflow-x: hidden; }
+  body { font-family: 'Inter', sans-serif; background: #f8f9fb; color: #1a1a2e; line-height: 1.6; overflow-x: hidden; }
 
   /* Header */
   .hero { background: linear-gradient(135deg, #192F57 0%, #0f1d3a 100%); color: white; padding: 60px 40px 50px; position: relative; overflow: hidden; }
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #F59E0B, #f97316, #F59E0B); }
   .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
   .hero .subtitle { font-size: 1.1rem; font-weight: 300; opacity: 0.85; margin-bottom: 24px; }
-  .hero .meta { display: flex; gap: 32px; font-size: 0.85rem; opacity: 0.7; }
+  .hero .meta { display: flex; gap: 32px; font-size: 0.85rem; opacity: 0.7; flex-wrap: wrap; }
   .hero .meta span { display: flex; align-items: center; gap: 6px; }
 
   /* Navigation */
   .nav-bar { background: white; border-bottom: 1px solid #e5e7eb; padding: 0 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .nav-bar ul { list-style: none; display: flex; gap: 0; overflow-x: auto; }
+  .nav-bar ul { list-style: none; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+  .nav-bar ul::-webkit-scrollbar { display: none; }
   .nav-bar li { flex-shrink: 0; }
   .nav-bar a { display: block; padding: 16px 20px; font-size: 0.82rem; font-weight: 600; color: #6b7280; text-decoration: none; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px; }
   .nav-bar a:hover, .nav-bar a.active { color: #192F57; border-bottom-color: #F59E0B; }
@@ -58,6 +60,7 @@
   /* Grid */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
   @media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
 
   /* Stat cards */
@@ -106,6 +109,68 @@
   /* Comparison table */
   .compare-table td:first-child { font-weight: 600; color: #192F57; width: 30%; }
 
+  /* Footer */
+  .footer { text-align: center; padding: 40px; color: #9ca3af; font-size: 0.8rem; border-top: 1px solid #e5e7eb; }
+
+  /* ===== Mobile Responsive ===== */
+  @media (max-width: 768px) {
+    .hero { padding: 36px 20px 32px; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero .subtitle { font-size: 0.95rem; margin-bottom: 16px; }
+    .hero .meta { gap: 12px 24px; font-size: 0.78rem; }
+
+    .nav-bar { padding: 0 12px; }
+    .nav-bar a { padding: 12px 14px; font-size: 0.72rem; }
+
+    .container { padding: 24px 16px 60px; }
+
+    .section h2 { font-size: 1.25rem; }
+    .section h2 .price { display: block; margin-left: 0; margin-top: 4px; font-size: 0.95rem; }
+    .section-header { gap: 12px; }
+    .section-number { width: 40px; height: 40px; font-size: 1rem; border-radius: 10px; }
+    .section-desc { font-size: 0.88rem; }
+
+    .card { padding: 20px 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .card h3 { font-size: 0.95rem; }
+
+    .stat-card { padding: 18px 14px; }
+    .stat-card .number { font-size: 1.6rem; }
+    .stat-card .label { font-size: 0.72rem; }
+    table { font-size: 0.82rem; min-width: 540px; }
+    th { padding: 10px 12px; font-size: 0.72rem; }
+    td { padding: 10px 12px; }
+
+    .callout { padding: 16px 18px; }
+
+    .total-bar { flex-direction: column; gap: 24px; padding: 24px 20px; text-align: center; }
+    .total-bar > div { text-align: center !important; }
+    .total-bar .total-amount { font-size: 1.8rem; }
+
+    .timeline { padding-left: 32px; }
+    .timeline-item::before { left: -25px; width: 14px; height: 14px; }
+    .timeline::before { left: 11px; }
+    .timeline-title { font-size: 0.95rem; }
+    .timeline-desc { font-size: 0.82rem; }
+
+    .divider { margin: 32px 0; }
+
+    .compare-table td:first-child { width: auto; }
+    .footer { padding: 24px 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.35rem; }
+    .hero .subtitle { font-size: 0.88rem; }
+    .hero .meta { flex-direction: column; gap: 6px; }
+
+    .stat-card .number { font-size: 1.4rem; }
+
+    .total-bar .total-amount { font-size: 1.5rem; }
+
+    .grid-3 { gap: 12px; }
+    .grid-2 { gap: 12px; }
+  }
+
   /* Print */
   @media print {
     .nav-bar { display: none; }
@@ -120,11 +185,11 @@
 <!-- HERO -->
 <div class="hero">
   <h1>CCV Engagement: Full Scope Overview</h1>
-  <p class="subtitle">What we are delivering, how the scope expanded, and the full pricing structure.</p>
+  <p class="subtitle">What we are delivering, how the scope is structured, and the full pricing breakdown.</p>
   <div class="meta">
     <span>Updated: March 19, 2026</span>
-    <span>AIDM Internal Reference</span>
-    <span>Client: Center for Christian Virtue</span>
+    <span>Prepared by AI Data Management</span>
+    <span>For: CCV Leadership</span>
   </div>
 </div>
 
@@ -157,13 +222,13 @@
     <div class="stat-card">
       <div class="number">$32,500</div>
       <div class="label">Original scope / mo</div>
-      <p style="font-size:0.78rem; color:#6b7280; margin-top:8px;">SGO Web App + Command Center core + AI Leadership</p>
+      <p style="font-size:0.78rem; color:#6b7280; margin-top:8px;">SGO Web App + Command Center core + data center + AI Leadership</p>
       <p style="font-size:0.85rem; font-weight:700; color:#192F57; margin-top:4px;">$390,000 / 12 months</p>
     </div>
     <div class="stat-card highlight">
       <div class="number orange">$42,500</div>
       <div class="label">With scope expansion / mo</div>
-      <p style="font-size:0.78rem; color:#6b7280; margin-top:8px;">+ CRM, departments, LMS, AI agents, data center, affiliate</p>
+      <p style="font-size:0.78rem; color:#6b7280; margin-top:8px;">+ CRM, departments, LMS, AI agents, affiliate</p>
       <p style="font-size:0.85rem; font-weight:700; color:#F59E0B; margin-top:4px;">$510,000 / 12 months</p>
     </div>
     <div class="stat-card">
@@ -178,8 +243,8 @@
     <h3>How the scope grew</h3>
     <table>
       <tr><th>Tier</th><th>Monthly</th><th>12-Month Total</th><th>What it covers</th></tr>
-      <tr><td><strong>Original scope</strong></td><td>$32,500</td><td>$390,000</td><td>SGO Web App (3 portals + AI chatbot), Command Center core (SGO Admin, Executive Dashboard with EOS, Compliance Engine, CEN Dashboard), 4 data migrations, AI Leadership + training</td></tr>
-      <tr><td><strong>+ Scope expansion</strong></td><td>+$10,000</td><td>+$120,000</td><td>Data center premium, CRM rebuild, 8 department dashboards with workflows, Training/LMS module, AI agents, affiliate/white-label platform, internal request systems</td></tr>
+      <tr><td><strong>Original scope</strong></td><td>$32,500</td><td>$390,000</td><td>SGO Web App (3 portals + AI chatbot), Command Center core (SGO Admin, Executive Dashboard with EOS, Compliance Engine, CEN Dashboard), 4 data migrations, data center management, AI Leadership + training</td></tr>
+      <tr><td><strong>+ Scope expansion</strong></td><td>+$10,000</td><td>+$120,000</td><td>CRM rebuild, 8 department dashboards with workflows, Training/LMS module, AI agents, affiliate/white-label platform, internal request systems</td></tr>
       <tr><td><strong>= Platform total</strong></td><td><strong>$42,500</strong></td><td><strong>$510,000</strong></td><td>Everything above combined</td></tr>
       <tr><td><strong>+ Marketing expansion</strong></td><td>+$5,000</td><td>+$60,000</td><td>CCV.org redesign, pillar microsites, SEO, social media automation, blog infrastructure, marketing analytics, brand management</td></tr>
       <tr><td style="background:#192F57; color:white; font-weight:800;">Full engagement</td><td style="background:#192F57; color:#F59E0B; font-weight:900; font-size:1rem;">$47,500</td><td style="background:#192F57; color:#F59E0B; font-weight:900; font-size:1rem;">$570,000</td><td style="background:#192F57; color:white;">Platform build + all add-ons + marketing</td></tr>
@@ -195,13 +260,13 @@
 <div class="section" id="original">
   <div class="section-header">
     <div class="section-number">1</div>
-    <h2>Original scope <span class="price">$32,500/mo ($390K/yr)</span></h2>
+    <h2>Original scope <span class="price">$32,500/mo</span></h2>
   </div>
   <p class="section-desc">What we scoped during the assessment and committed to from the beginning. Two products with a shared data layer, plus fractional CTO services.</p>
 
   <!-- SGO Web App -->
   <div class="card">
-    <h3>Product 1: SGO Web App <span class="badge badge-included">~$11,000/mo</span></h3>
+    <h3>Product 1: SGO Web App <span class="badge badge-included">~$16,000/mo</span></h3>
     <p style="font-size:0.9rem; color:#4b5563; margin-bottom:16px;">Full Theodore replacement. Public-facing platform for donors, schools, and families across 20+ states.</p>
     <table>
       <tr><th>Portal</th><th>What is included</th></tr>
@@ -222,7 +287,7 @@
 
   <!-- Command Center Core -->
   <div class="card">
-    <h3>Product 2: CCV Command Center - Core <span class="badge badge-included">~$17,500/mo</span></h3>
+    <h3>Product 2: CCV Command Center - Core <span class="badge badge-included">~$12,500/mo</span></h3>
     <p style="font-size:0.9rem; color:#4b5563; margin-bottom:16px;">Internal operations backbone. These four components are directly tied to the SGO rebuild and were part of the original assessment scope.</p>
     <table>
       <tr><th>Component</th><th>What is included</th><th>Primary users</th></tr>
@@ -266,15 +331,9 @@
 <div class="section" id="expansion">
   <div class="section-header">
     <div class="section-number orange">2</div>
-    <h2>Scope expansion <span class="price">+$10,000/mo ($42,500 total)</span></h2>
+    <h2>Scope expansion <span class="price">+$10,000/mo</span></h2>
   </div>
   <p class="section-desc">CCV requested all of this during the assessment process. This is everything beyond the original $32,500/mo scope that brings the engagement to $42,500/mo ($510K for 12 months).</p>
-
-  <!-- Data Center Premium -->
-  <div class="card">
-    <h3>Data center premium <span class="badge badge-extra">+$2,000/mo</span></h3>
-    <p style="font-size:0.9rem; color:#4b5563;">CCV chose a third-party data center over cloud (AWS/Azure/GCP). This requires additional manual labor for server configuration, deployment pipelines, maintenance, and troubleshooting. Cloud automates all of this. The $2,000/mo covers the extra engineering time.</p>
-  </div>
 
   <!-- CRM Rebuild -->
   <div class="card">
@@ -391,9 +450,9 @@
 <div class="section" id="marketing">
   <div class="section-header">
     <div class="section-number purple">3</div>
-    <h2>Marketing expansion <span class="price">+$5,000/mo ($47,500 total)</span></h2>
+    <h2>Marketing expansion <span class="price">+$5,000/mo</span></h2>
   </div>
-  <p class="section-desc">AIDM provides strategy, infrastructure, and management. CCV's internal team (8-person Communications department, graphic designer, website person) handles execution and content creation. We are not replacing a full-service marketing agency. We are building the engine their team drives.</p>
+  <p class="section-desc">AIDM provides the marketing strategy, builds the website and digital infrastructure, and sets up the automations. Your internal Communications team continues to handle content creation, social media posting, and paid advertising using the platforms and tools we build.</p>
 
   <!-- What AIDM Does -->
   <div class="card">
@@ -410,54 +469,10 @@
     </table>
   </div>
 
-  <!-- What CCV Does -->
-  <div class="card">
-    <h3>What CCV's internal team handles <span class="badge badge-included">Their scope</span></h3>
-    <ul class="feature-list">
-      <li><strong>Content creation</strong> - Writing blog posts, creating social media graphics, producing video content</li>
-      <li><strong>Social media posting</strong> - Daily posting, community engagement, responding to comments</li>
-      <li><strong>Paid advertising</strong> - Managing ad budgets, running campaigns on Meta/Google/etc.</li>
-      <li><strong>Email content</strong> - Writing email copy, designing templates, managing send schedules</li>
-      <li><strong>PR and media</strong> - Press releases, media relationships, external communications</li>
-    </ul>
-  </div>
-
-  <!-- JDA Breakdown -->
-  <div class="card">
-    <h3>JDA Worldwide: what CCV paid $325K for <span class="badge badge-question">Contract likely terminated</span></h3>
-    <p style="font-size:0.9rem; color:#4b5563; margin-bottom:16px;">From the JDA contract documents Matt forwarded (March 17). Matt called JDA's work "waste of money focused on theory and ideas."</p>
-    <table>
-      <tr><th>JDA deliverable</th><th>What was promised</th><th>Status (per Matt)</th></tr>
-      <tr><td><strong>Market research</strong></td><td>10-15 focus groups with parents and school leaders. Claritas audience study.</td><td style="color:#dc2626;">Reduced to 6 conversations. Claritas study never developed. Messaging pillars never received.</td></tr>
-      <tr><td><strong>Brand strategy</strong></td><td>Brand workshop, communications map, formal strategy document.</td><td style="color:#b45309;">Workshop completed 2/25/26 (3 months late). Strategy docs still pending.</td></tr>
-      <tr><td><strong>Creative campaign</strong></td><td>Creative visuals, messaging pillars, tone of voice, brand positioning, campaign theme.</td><td style="color:#dc2626;">No delivery dates on Gantt chart. Started 10 weeks late. Only "internal JDA concepting review" listed.</td></tr>
-      <tr><td><strong>Video production</strong></td><td>9 video spots (3x :30s, 3x :15s, 3x :6-7s).</td><td style="color:#dc2626;">Not started. Phase 2 is "nothing more than a header with TBD."</td></tr>
-      <tr><td><strong>Photography + audio</strong></td><td>Photo shoot + 4-6 audio spots for radio/podcast.</td><td style="color:#dc2626;">Not started. Dependent on video production.</td></tr>
-      <tr><td><strong>PR campaign</strong></td><td>12 months of earned media pitches.</td><td style="color:#dc2626;">Investment "$TBD/month." No timeline.</td></tr>
-      <tr><td><strong>Go-to-market</strong></td><td>Omnichannel: owned media, paid media, book launch.</td><td style="color:#dc2626;">Investment "$TBD." Phase 2 has no timeline.</td></tr>
-      <tr><td><strong>Paid media</strong></td><td>Targeted ad placements.</td><td style="color:#b45309;">Opaque fees. Keith flagged money being "filtered through the agency."</td></tr>
-      <tr><td><strong>Micro-sites</strong></td><td>Per-state micro-sites for SGO outreach.</td><td style="color:#dc2626;">Matt called this "old school." Creates vendor lock-in.</td></tr>
-    </table>
-    <div class="callout red" style="margin-top:16px;">
-      <strong>JDA timeline:</strong>
-      <p>Phase 1 was supposed to take 7-8 weeks (Nov 2025 - Jan 2026). Revised to 11-12 weeks, still not complete in March 2026. Phase 2 has not started and has no delivery dates. Original timeline slipped 3+ months across every workstream.</p>
-    </div>
-  </div>
-
-  <!-- Side by side -->
-  <div class="card">
-    <h3>JDA vs. AIDM approach</h3>
-    <table class="compare-table">
-      <tr><th style="width:25%;">Area</th><th>JDA ($325K)</th><th>AIDM ($60K marketing add-on)</th></tr>
-      <tr><td><strong>What you get</strong></td><td>Strategy documents, brand workshops, creative concepts, media pitches</td><td>Working websites, live automation platforms, integrated analytics dashboards</td></tr>
-      <tr><td><strong>SEO</strong></td><td>Traditional "old school." Micro-sites fragment traffic.</td><td>Modern AI-search optimized. Built into every page. All traffic through ccv.org.</td></tr>
-      <tr><td><strong>Website</strong></td><td>Micro-sites per state. Vendor lock-in.</td><td>ccv.org redesign + state landing pages built into the platform. CCV owns everything.</td></tr>
-      <tr><td><strong>Paid media</strong></td><td>Large budgets filtered through agency. Opaque fees.</td><td>CCV manages paid media directly. AIDM builds tracking/analytics. No markup.</td></tr>
-      <tr><td><strong>School outreach</strong></td><td>CCV gathers school lists from every state manually.</td><td>National school lists acquired and imported into CRM automatically.</td></tr>
-      <tr><td><strong>Integration</strong></td><td>Separate from CRM, donor data, internal systems.</td><td>Marketing data feeds directly into Command Center and executive dashboard.</td></tr>
-      <tr><td><strong>Ownership</strong></td><td>CCV does not own micro-sites or tooling.</td><td>CCV owns all code, data, and configurations outright.</td></tr>
-      <tr><td><strong>Content</strong></td><td>JDA produces video/photo/audio assets.</td><td>AIDM builds infrastructure. CCV's 8-person Comms team creates content with AI tools.</td></tr>
-    </table>
+  <!-- What this means for CCV -->
+  <div class="callout green">
+    <strong>What this means for your team.</strong>
+    <p>AIDM builds the platforms, sets up the automations, designs the strategy, and manages the infrastructure. Your Communications team focuses on what they do best: creating content, engaging your community, and running campaigns using the tools and automations we build. Everything is fully integrated with the Command Center and your donor data.</p>
   </div>
 </div>
 
@@ -497,12 +512,22 @@
       </div>
 
       <div class="timeline-item phase3">
-        <div class="timeline-label" style="color:#059669;">Phase 3: November 2026 - March 2027</div>
-        <div class="timeline-title">Integration, Testing, Full Deployment</div>
+        <div class="timeline-label" style="color:#059669;">Phase 3: November 2026 - December 2026</div>
+        <div class="timeline-title">Integration, Remaining Builds, Soft Launch</div>
         <div class="timeline-desc">
-          <strong>Priority:</strong> Cross-system integration testing, remaining dashboards and workflows, Training/LMS module, affiliate platform, AI agents, white-label configuration.<br>
-          <strong>Parallel:</strong> State-by-state SGO expansion, user acceptance testing, Theodore decommission, marketing analytics refinement.<br>
-          <strong>Deliverables:</strong> Full platform operational, all departments live, SGO soft-launched, Theodore decommissioned.
+          <strong>Priority:</strong> Cross-system integration testing, remaining department dashboards and workflows, Training/LMS module, affiliate platform, AI agents deployment, white-label configuration.<br>
+          <strong>Parallel:</strong> User acceptance testing, Theodore decommission planning, marketing analytics refinement.<br>
+          <strong>Deliverables:</strong> Full platform operational, all departments live, SGO soft-launched in initial states, Theodore decommissioned.
+        </div>
+      </div>
+
+      <div class="timeline-item phase3">
+        <div class="timeline-label" style="color:#059669;">Phase 4: January - March 2027</div>
+        <div class="timeline-title">Testing, Iteration, Full AI Adoption, National Expansion</div>
+        <div class="timeline-desc">
+          <strong>Priority:</strong> Full end-to-end testing across all systems, iteration based on user feedback, organization-wide AI adoption and training completion, SGO national expansion across all 20+ states.<br>
+          <strong>Parallel:</strong> Performance optimization, security audits, documentation, transition planning for maintenance phase.<br>
+          <strong>Deliverables:</strong> All systems production-ready and fully tested, AI tools adopted across every department, SGO live nationally, full platform handoff complete, maintenance phase begins.
         </div>
       </div>
 
@@ -511,7 +536,7 @@
 
   <div class="callout">
     <strong>Why SGO and marketing come first.</strong>
-    <p>SGO replaces Theodore, which is the most urgent need. Marketing is time-sensitive because the JDA contract is being terminated and Aaron wants immediate improvement. Focusing here first gives CCV tangible results within 90 days while we scope the Command Center properly with department input from AI Training Part 2.</p>
+    <p>The SGO platform replaces Theodore, which is the most urgent need. Marketing and website are also time-sensitive as CCV needs a stronger digital presence now. Focusing here first gives CCV tangible results within 90 days while we scope the Command Center properly with department input from the AI Training Part 2 sessions.</p>
   </div>
 </div>
 
@@ -595,9 +620,9 @@
 </div>
 
 <!-- Footer -->
-<div style="text-align:center; padding:40px; color:#9ca3af; font-size:0.8rem; border-top:1px solid #e5e7eb;">
-  <p>AIDM Internal Reference Document</p>
-  <p>AI Data Management - March 2026</p>
+<div class="footer">
+  <p>Prepared by AI Data Management (AIDM)</p>
+  <p style="margin-top: 4px;">March 2026</p>
 </div>
 
 </div>

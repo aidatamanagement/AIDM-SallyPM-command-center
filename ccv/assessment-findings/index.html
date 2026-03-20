@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCV 60-Day Assessment Findings</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { overflow-x: hidden; }
+  body { font-family: 'Inter', sans-serif; background: #f8f9fb; color: #1a1a2e; line-height: 1.6; overflow-x: hidden; }
+
+  /* Header */
+  .hero { background: linear-gradient(135deg, #192F57 0%, #0f1d3a 100%); color: white; padding: 60px 40px 50px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #F59E0B, #f97316, #F59E0B); }
+  .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 1.1rem; font-weight: 300; opacity: 0.85; margin-bottom: 24px; }
+  .hero .meta { display: flex; gap: 32px; font-size: 0.85rem; opacity: 0.7; flex-wrap: wrap; }
+  .hero .meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Navigation */
+  .nav-bar { background: white; border-bottom: 1px solid #e5e7eb; padding: 0 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .nav-bar ul { list-style: none; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+  .nav-bar ul::-webkit-scrollbar { display: none; }
+  .nav-bar li { flex-shrink: 0; }
+  .nav-bar a { display: block; padding: 16px 18px; font-size: 0.78rem; font-weight: 600; color: #6b7280; text-decoration: none; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px; }
+  .nav-bar a:hover, .nav-bar a.active { color: #192F57; border-bottom-color: #F59E0B; }
+
+  /* Main */
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 40px 80px; }
+
+  /* Section */
+  .section { margin-bottom: 48px; scroll-margin-top: 80px; }
+  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .section-number { width: 48px; height: 48px; background: #192F57; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; flex-shrink: 0; }
+  .section-number.orange { background: #F59E0B; color: #192F57; }
+  .section-number.green { background: #059669; color: white; }
+  .section-number.purple { background: #7c3aed; color: white; }
+  .section-number.red { background: #dc2626; color: white; }
+  .section h2 { font-size: 1.6rem; font-weight: 800; color: #192F57; letter-spacing: -0.3px; }
+  .section-desc { color: #4b5563; margin-bottom: 24px; font-size: 0.95rem; }
+
+  /* Cards */
+  .card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 20px; border: 1px solid #e5e7eb; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .card h3 { font-size: 1.05rem; font-weight: 700; color: #192F57; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .card h3 .badge { font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card p, .card li { font-size: 0.9rem; color: #4b5563; }
+  .badge-critical { background: #fee2e2; color: #dc2626; }
+  .badge-warning { background: #fef3c7; color: #b45309; }
+  .badge-good { background: #ecfdf5; color: #059669; }
+  .badge-info { background: #e0f2fe; color: #0369a1; }
+  .badge-new { background: #ede9fe; color: #7c3aed; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: #192F57; color: white; text-align: left; padding: 12px 16px; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 12px 16px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+  tr:nth-child(even) td { background: #f9fafb; }
+  tr:hover td { background: #f0f4ff; }
+  td strong { color: #192F57; }
+
+  /* Grid */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Stat cards */
+  .stat-card { background: white; border-radius: 12px; padding: 24px; border: 1px solid #e5e7eb; text-align: center; }
+  .stat-card .number { font-size: 2.2rem; font-weight: 900; color: #192F57; line-height: 1; }
+  .stat-card .number.orange { color: #F59E0B; }
+  .stat-card .number.green { color: #059669; }
+  .stat-card .number.purple { color: #7c3aed; }
+  .stat-card .number.red { color: #dc2626; }
+  .stat-card .label { font-size: 0.78rem; color: #6b7280; margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Feature list */
+  .feature-list { list-style: none; }
+  .feature-list li { padding: 8px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px; }
+  .feature-list li::before { content: ''; width: 8px; height: 8px; background: #F59E0B; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .feature-list.green li::before { background: #059669; }
+  .feature-list.red li::before { background: #dc2626; }
+  .feature-list.blue li::before { background: #192F57; }
+
+  /* Callout */
+  .callout { background: linear-gradient(135deg, #fef3c7, #fefce8); border-left: 4px solid #F59E0B; padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+  .callout.blue { background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-left-color: #192F57; }
+  .callout.red { background: linear-gradient(135deg, #fee2e2, #fef2f2); border-left-color: #dc2626; }
+  .callout.green { background: linear-gradient(135deg, #ecfdf5, #f0fdf4); border-left-color: #059669; }
+  .callout strong { color: #192F57; }
+  .callout p { font-size: 0.9rem; color: #4b5563; }
+
+  /* Severity indicator */
+  .severity { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; padding: 2px 10px; border-radius: 12px; }
+  .severity.critical { background: #fee2e2; color: #dc2626; }
+  .severity.high { background: #fef3c7; color: #b45309; }
+  .severity.medium { background: #e0f2fe; color: #0369a1; }
+  .severity.low { background: #ecfdf5; color: #059669; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, #192F57, #F59E0B, #059669, #7c3aed); border-radius: 2px; }
+  .timeline-item { position: relative; margin-bottom: 32px; }
+  .timeline-item::before { content: ''; position: absolute; left: -33px; top: 6px; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #192F57; }
+  .timeline-item.phase1::before { background: #192F57; }
+  .timeline-item.phase2::before { background: #F59E0B; }
+  .timeline-item.phase3::before { background: #059669; }
+  .timeline-item.phase4::before { background: #7c3aed; }
+  .timeline-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .timeline-title { font-size: 1.05rem; font-weight: 700; color: #192F57; margin-bottom: 4px; }
+  .timeline-desc { font-size: 0.88rem; color: #4b5563; }
+  .timeline-desc ul { list-style: none; margin-top: 8px; }
+  .timeline-desc ul li { padding: 3px 0; display: flex; align-items: flex-start; gap: 8px; }
+  .timeline-desc ul li::before { content: ''; width: 6px; height: 6px; background: #d1d5db; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+
+  /* Divider */
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, #e5e7eb, transparent); margin: 48px 0; }
+
+  /* ===== Mobile Responsive ===== */
+  @media (max-width: 768px) {
+    .hero { padding: 36px 20px 32px; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero .subtitle { font-size: 0.95rem; margin-bottom: 16px; }
+    .hero .meta { gap: 12px 24px; font-size: 0.78rem; }
+
+    .nav-bar { padding: 0 12px; }
+    .nav-bar a { padding: 12px 14px; font-size: 0.72rem; }
+
+    .container { padding: 24px 16px 60px; }
+
+    .section h2 { font-size: 1.25rem; }
+    .section-header { gap: 12px; }
+    .section-number { width: 40px; height: 40px; font-size: 1rem; border-radius: 10px; }
+    .section-desc { font-size: 0.88rem; }
+
+    .card { padding: 20px 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .card h3 { font-size: 0.95rem; }
+
+    .stat-card { padding: 18px 14px; }
+    .stat-card .number { font-size: 1.6rem; }
+    .stat-card .label { font-size: 0.72rem; }
+
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    table { font-size: 0.82rem; min-width: 540px; }
+    th { padding: 10px 12px; font-size: 0.72rem; }
+    td { padding: 10px 12px; }
+
+    .callout { padding: 16px 18px; }
+
+    .timeline { padding-left: 32px; }
+    .timeline-item::before { left: -25px; width: 14px; height: 14px; }
+    .timeline::before { left: 11px; }
+    .timeline-title { font-size: 0.95rem; }
+    .timeline-desc { font-size: 0.82rem; }
+
+    .divider { margin: 32px 0; }
+
+    .severity { font-size: 0.7rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.35rem; }
+    .hero .subtitle { font-size: 0.88rem; }
+    .hero .meta { flex-direction: column; gap: 6px; }
+
+    .stat-card .number { font-size: 1.4rem; }
+
+    .grid-4 { grid-template-columns: 1fr; }
+    .grid-3 { gap: 12px; }
+    .grid-2 { gap: 12px; }
+
+    .footer { padding: 24px 16px; }
+  }
+
+  /* Print */
+  @media print { .nav-bar { position: static; } .hero { padding: 30px; } .container { padding: 20px; } }
+
+  /* Footer */
+  .footer { text-align: center; padding: 40px; color: #9ca3af; font-size: 0.8rem; border-top: 1px solid #e5e7eb; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>60-Day Assessment Findings</h1>
+  <p class="subtitle">Center for Christian Virtue -- Technology, Systems, and AI Readiness</p>
+  <div class="meta">
+    <span>Prepared by AI Data Management</span>
+    <span>Assessment Period: January - March 2026</span>
+    <span>Confidential</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#summary">Executive Summary</a></li>
+    <li><a href="#systems">Systems Review</a></li>
+    <li><a href="#pain-points">Key Findings</a></li>
+    <li><a href="#departments">Departments</a></li>
+    <li><a href="#ai-readiness">AI Readiness</a></li>
+    <li><a href="#plan">Proposed Plan</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<div class="section" id="summary">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <h2>Executive Summary</h2>
+  </div>
+  <p class="section-desc">Over 60 days, AIDM conducted a comprehensive assessment of CCV's technology landscape, workflows, department needs, and AI readiness. This document presents our findings and a detailed plan for moving forward.</p>
+
+  <div class="grid-4" style="margin-bottom: 24px;">
+    <div class="stat-card">
+      <div class="number">5</div>
+      <div class="label">Core Systems Reviewed</div>
+    </div>
+    <div class="stat-card">
+      <div class="number orange">9</div>
+      <div class="label">Departments Assessed</div>
+    </div>
+    <div class="stat-card">
+      <div class="number red">23+</div>
+      <div class="label">Pain Points Identified</div>
+    </div>
+    <div class="stat-card">
+      <div class="number green">25</div>
+      <div class="label">States Served by SGO</div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <strong>Core Finding:</strong>
+    <p>CCV has outgrown its current technology stack. The systems that supported the organization through its growth phase are now creating friction, duplicate work, and data reliability issues. The path forward requires two purpose-built products: an externally-facing SGO Web App to replace Theodore, and an internal CCV Command Center to unify operations, reporting, and compliance across all departments.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 2. SYSTEMS REVIEW -->
+<div class="section" id="systems">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <h2>Current Systems Review</h2>
+  </div>
+  <p class="section-desc">CCV relies on five primary systems. Each was evaluated for functionality, reliability, integration capability, and alignment with organizational goals.</p>
+
+  <!-- Theodore -->
+  <div class="card">
+    <h3>Theodore (SGO Platform) <span class="badge badge-critical">Critical Issues</span></h3>
+    <p style="margin-bottom: 16px;">Theodore is the external-facing platform that powers the Student Government Organization program across 25+ states. It handles student registration, chapter management, scoring, and payment processing.</p>
+    <div class="grid-2">
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Identified Problems</strong>
+        <ul class="feature-list red">
+          <li>Multi-factor authentication required on every single login, creating friction for all users</li>
+          <li>Manual scoring processes that should be automated</li>
+          <li>Stripe payment integration issues causing failed transactions</li>
+          <li>Duplicate receipt generation creating confusion for parents and advisors</li>
+          <li>Financial reporting shows inaccurate numbers -- dashboard figures do not match actual revenue</li>
+          <li>"Mystery numbers" appearing on the dashboard with no clear data source</li>
+          <li>No mobile-responsive design for students and advisors in the field</li>
+          <li>Limited self-service capabilities for chapter advisors</li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Assessment</strong>
+        <div class="callout red" style="margin-top: 0;">
+          <strong>Recommendation: Full Replacement</strong>
+          <p>Theodore cannot be incrementally improved. The codebase, architecture, and user experience all need to be rebuilt from scratch. The replacement (SGO Web App) will serve students, advisors, chapter leaders, and state coordinators through three distinct portals with role-based access.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Virtuous -->
+  <div class="card">
+    <h3>Virtuous (CRM) <span class="badge badge-critical">Critical Issues</span></h3>
+    <p style="margin-bottom: 16px;">Virtuous serves as CCV's donor and contact management system, holding approximately 49,000 records and managing 3,365 email contacts for outreach.</p>
+    <div class="grid-2">
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Identified Problems</strong>
+        <ul class="feature-list red">
+          <li>Staff describe it as "killing" them in terms of daily workflow friction</li>
+          <li>Integration with SGO/Theodore is completely broken</li>
+          <li>Email automation limited to linear drip sequences only</li>
+          <li>No branching logic or behavioral triggers for communications</li>
+          <li>49,000 records need deduplication and data hygiene</li>
+          <li>Reporting capabilities do not meet leadership needs</li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Assessment</strong>
+        <div class="callout red" style="margin-top: 0;">
+          <strong>Recommendation: Full Rebuild</strong>
+          <p>Virtuous has reached its limits for CCV's needs. The CRM will be rebuilt as part of the CCV Command Center, with purpose-built donor management, advanced email automation with behavioral triggers, and full integration with both the SGO Web App and department dashboards. All 49,000 records will be migrated, deduplicated, and cleaned as part of the transition.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other Systems -->
+  <div class="grid-3">
+    <div class="card">
+      <h3>Cornerstone <span class="badge badge-warning">Data Migration</span></h3>
+      <p>Payment processing platform. Transaction history and donor records need to be migrated into the new system architecture. Currently operates separately from Theodore, creating reconciliation issues.</p>
+    </div>
+    <div class="card">
+      <h3>Pathwright <span class="badge badge-info">LMS Platform</span></h3>
+      <p>Learning management system used for training content. Course data, completion records, and user progress will be migrated into the new platform. Training functionality will be rebuilt within the Command Center.</p>
+    </div>
+    <div class="card">
+      <h3>Growth Zone <span class="badge badge-info">Events/Membership</span></h3>
+      <p>Event management and membership tracking. Event data and member records require migration. Functionality will be absorbed into the Command Center's department dashboards.</p>
+    </div>
+  </div>
+
+  <div class="callout blue" style="margin-top: 24px;">
+    <strong>Data Migration Scope:</strong>
+    <p>Three separate data migrations required (Cornerstone, Pathwright, Growth Zone) plus 4+ years of Theodore/SGO historical data. All migrations will preserve historical records and be validated before any system cutover.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 3. KEY FINDINGS -->
+<div class="section" id="pain-points">
+  <div class="section-header">
+    <div class="section-number red">3</div>
+    <h2>Key Findings</h2>
+  </div>
+  <p class="section-desc">Beyond individual system issues, our assessment uncovered organization-wide patterns that affect productivity, accuracy, and growth potential.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Data Reliability Crisis</h3>
+      <p>Multiple staff members reported not trusting the numbers in their systems. Theodore displays a significant discrepancy between displayed and actual revenue figures. Dashboard figures have no traceable source. Financial reporting requires manual reconciliation across multiple systems before any number can be trusted. This erodes confidence in data-driven decision making.</p>
+    </div>
+    <div class="card">
+      <h3>Manual Process Overload</h3>
+      <p>Staff across departments spend significant time on tasks that should be automated: manual scoring, duplicate data entry, cross-system reconciliation, report compilation, and email list management. These manual processes are not just inefficient but also introduce human error.</p>
+    </div>
+    <div class="card">
+      <h3>System Fragmentation</h3>
+      <p>Five core systems that do not communicate effectively with each other. Staff operate in silos, re-entering the same information in multiple places. There is no single source of truth for organizational metrics, making leadership reporting labor-intensive and often delayed.</p>
+    </div>
+    <div class="card">
+      <h3>Compliance and Reporting Gaps</h3>
+      <p>As a nonprofit operating across 25+ states with political advocacy work, CCV has significant compliance obligations. Current systems do not adequately support state-by-state regulatory tracking, financial transparency requirements, or the audit trails needed for organizational governance.</p>
+    </div>
+    <div class="card">
+      <h3>Growth Bottleneck</h3>
+      <p>SGO is expanding nationally, but Theodore cannot scale to support new states, increased student volume, or the operational complexity of multi-state coordination. The current platform is the primary bottleneck to SGO's growth strategy.</p>
+    </div>
+    <div class="card">
+      <h3>Communication Infrastructure</h3>
+      <p>Email marketing is limited to basic drip campaigns through Virtuous. There is no behavioral segmentation, no automated journeys based on user actions, and limited ability to coordinate messaging across the organization's different audiences (donors, parents, advisors, students, legislators).</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 4. DEPARTMENTS -->
+<div class="section" id="departments">
+  <div class="section-header">
+    <div class="section-number orange">4</div>
+    <h2>Department Assessment</h2>
+  </div>
+  <p class="section-desc">Each of CCV's nine departments was assessed for current workflows, technology usage, pain points, and opportunities for automation and AI integration.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Department</th>
+        <th>Primary Finding</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CEN (Christian Education Network / SGO)</strong></td>
+        <td>Entire workflow dependent on Theodore. Needs complete platform rebuild with automated scoring, real-time dashboards, and multi-state management.</td>
+        <td><span class="severity critical">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>CAN (Christian Action Network)</strong></td>
+        <td>Advocacy tracking across 25 states with legislative session monitoring. Needs automated alerts, action tracking, and constituent engagement tools.</td>
+        <td><span class="severity high">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>CBN (Christian Broadcasting Network)</strong></td>
+        <td>Content production and distribution workflows. Needs better media asset management, publishing coordination, and audience analytics.</td>
+        <td><span class="severity medium">Medium</span></td>
+      </tr>
+      <tr>
+        <td><strong>Policy</strong></td>
+        <td>Research and policy brief production. Needs document management, collaboration tools, and automated distribution to stakeholders.</td>
+        <td><span class="severity medium">Medium</span></td>
+      </tr>
+      <tr>
+        <td><strong>Pro-Life</strong></td>
+        <td>Campaign coordination and volunteer management. Needs event tracking, volunteer communication, and impact reporting.</td>
+        <td><span class="severity medium">Medium</span></td>
+      </tr>
+      <tr>
+        <td><strong>Communications</strong></td>
+        <td>8-person team managing all external communications. Needs unified content calendar, multi-channel publishing, and audience segmentation tools.</td>
+        <td><span class="severity high">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Advancement</strong></td>
+        <td>Donor management and fundraising. Currently struggling with Virtuous. Needs better donor tracking, giving analytics, and campaign automation.</td>
+        <td><span class="severity high">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Operations</strong></td>
+        <td>Internal process management. Needs workflow automation, internal request systems, and cross-department coordination tools.</td>
+        <td><span class="severity medium">Medium</span></td>
+      </tr>
+      <tr>
+        <td><strong>Facilities</strong></td>
+        <td>Physical space and resource management. Needs maintenance tracking, room/resource scheduling, and vendor management.</td>
+        <td><span class="severity low">Low</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top: 24px;">
+    <strong>Department Dashboard Approach:</strong>
+    <p>Each department will receive a dedicated dashboard within the CCV Command Center. The CEN (SGO) department dashboard is included in the base build scope. Additional department dashboards will be built with customized workflows tailored to each team's specific needs.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 5. AI READINESS -->
+<div class="section" id="ai-readiness">
+  <div class="section-header">
+    <div class="section-number green">5</div>
+    <h2>AI Readiness Assessment</h2>
+  </div>
+  <p class="section-desc">CCV's AI readiness was evaluated across governance, team capability, infrastructure, and use case identification.</p>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <h3>Completed During Assessment</h3>
+      <ul class="feature-list green">
+        <li>Company-wide AI Policy document created and delivered</li>
+        <li>AI training workshop conducted for leadership team</li>
+        <li>Department-level AI contacts identified across all 9 departments</li>
+        <li>AI use cases documented per department</li>
+        <li>Data center vendor selected (3Z) for secure hosting</li>
+        <li>Part 1 training materials delivered</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Planned for Build Phase</h3>
+      <ul class="feature-list blue">
+        <li>Part 2 department-specific AI training sessions</li>
+        <li>AI chatbot for SGO (student and advisor support)</li>
+        <li>AI-powered analytics across Command Center dashboards</li>
+        <li>Automated content assistance for Communications team</li>
+        <li>AI-driven donor insights for Advancement</li>
+        <li>Ongoing AI strategy advisory through Fractional CTO</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <strong>AI Readiness Level: Foundations in Place</strong>
+    <p>CCV has strong leadership buy-in for AI adoption, a completed governance policy, and an identified vendor for secure data hosting. The organization is well-positioned to integrate AI capabilities throughout the new platform build, rather than retrofitting AI into legacy systems.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 6. PROPOSED PLAN -->
+<div class="section" id="plan">
+  <div class="section-header">
+    <div class="section-number purple">6</div>
+    <h2>Proposed Plan</h2>
+  </div>
+  <p class="section-desc">Based on our findings, we propose building two purpose-built products supported by AI leadership and training. Here is exactly what we will deliver and how.</p>
+
+  <!-- Product 1: SGO -->
+  <div class="card" style="border-left: 4px solid #192F57;">
+    <h3>Product 1: SGO Web App <span class="badge badge-new">Full Theodore Replacement</span></h3>
+    <p style="margin-bottom: 16px;">A modern, mobile-responsive web application that replaces Theodore entirely. Built for students, advisors, chapter leaders, and state coordinators across 25+ states with plans for national expansion.</p>
+
+    <div class="grid-2">
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Three User Portals</strong>
+        <ul class="feature-list">
+          <li><strong>Student Portal</strong> -- Registration, chapter participation, scoring, resources, and progress tracking</li>
+          <li><strong>Advisor Portal</strong> -- Chapter management, student oversight, event coordination, and reporting</li>
+          <li><strong>State Coordinator Portal</strong> -- Multi-chapter oversight, state-level analytics, compliance tracking, and resource distribution</li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Core Capabilities</strong>
+        <ul class="feature-list">
+          <li>Automated scoring system replacing all manual processes</li>
+          <li>Stripe payment integration with accurate financial reporting</li>
+          <li>AI-powered chatbot for student and advisor support</li>
+          <li>Real-time dashboards with trustworthy data</li>
+          <li>Mobile-first responsive design</li>
+          <li>Multi-state expansion support (25 states to national)</li>
+          <li>4+ years of historical data migrated from Theodore</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 2: Command Center -->
+  <div class="card" style="border-left: 4px solid #F59E0B;">
+    <h3>Product 2: CCV Command Center <span class="badge badge-new">Internal Operations Hub</span></h3>
+    <p style="margin-bottom: 16px;">A centralized internal platform that gives CCV leadership and department heads real-time visibility, workflow automation, and data-driven decision support across the entire organization.</p>
+
+    <strong style="font-size: 0.82rem; display: block; margin-bottom: 12px;">Four Core Pillars</strong>
+    <div class="grid-2" style="margin-bottom: 20px;">
+      <div class="callout blue" style="margin: 0;">
+        <strong>Pillar 1: SGO Administration</strong>
+        <p>Internal admin panel for the SGO Web App. Chapter approvals, state management, scoring oversight, financial reconciliation, and advisor management.</p>
+      </div>
+      <div class="callout" style="margin: 0;">
+        <strong>Pillar 2: Executive Dashboard</strong>
+        <p>Organization-wide KPIs, financial health, program metrics, staff performance, and cross-department analytics. One screen, trusted numbers.</p>
+      </div>
+      <div class="callout green" style="margin: 0;">
+        <strong>Pillar 3: Department Dashboards</strong>
+        <p>Dedicated dashboards for each of CCV's 9 departments. Customized workflows, team-specific metrics, and automated task management tailored to each team.</p>
+      </div>
+      <div class="callout" style="margin: 0; background: linear-gradient(135deg, #ede9fe, #f5f3ff); border-left-color: #7c3aed;">
+        <strong>Pillar 4: Compliance Hub</strong>
+        <p>State-by-state regulatory tracking, audit trails, financial transparency reporting, and nonprofit governance tools for 25+ state operations.</p>
+      </div>
+    </div>
+
+    <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Additional Modules</strong>
+    <ul class="feature-list">
+      <li><strong>CRM Integration</strong> -- Connect to existing or new CRM for unified contact and donor management</li>
+      <li><strong>Email Marketing Engine</strong> -- Behavioral segmentation, automated journeys, multi-audience campaigns</li>
+      <li><strong>Analytics and Reporting</strong> -- AI-powered insights, automated report generation, custom dashboards</li>
+      <li><strong>Data Migrations</strong> -- Pathwright (LMS), Growth Zone (events), and Cornerstone (payments) data brought into unified system</li>
+    </ul>
+  </div>
+
+  <!-- AI Leadership -->
+  <div class="card" style="border-left: 4px solid #059669;">
+    <h3>AI Leadership, Training, and Strategy</h3>
+    <p style="margin-bottom: 16px;">Ongoing strategic technology leadership through a Fractional CTO to guide AI adoption, vendor decisions, and technology governance across the organization.</p>
+    <div class="grid-2">
+      <div>
+        <ul class="feature-list green">
+          <li>Fractional CTO advisory (Keith Coe)</li>
+          <li>Department-specific AI training (Part 2 sessions)</li>
+          <li>AI policy governance and updates</li>
+          <li>Vendor evaluation and management</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="feature-list green">
+          <li>Board-level technology briefings</li>
+          <li>Data center and security oversight</li>
+          <li>Technology roadmap planning</li>
+          <li>Two in-person visits per year</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- How We Work -->
+  <div class="card">
+    <h3>How We Work Together</h3>
+    <p style="margin-bottom: 16px;">Our engagement model is designed for transparency, accountability, and close collaboration with your team throughout the build.</p>
+    <div class="grid-3">
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Meetings and Communication</strong>
+        <ul class="feature-list blue">
+          <li>3 meetings per week with core team</li>
+          <li>Weekly written status reports</li>
+          <li>Quarterly milestone demos</li>
+          <li>2 in-person visits per year</li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">Our Team</strong>
+        <ul class="feature-list blue">
+          <li>Full project management</li>
+          <li>UI/UX design</li>
+          <li>Full-stack development</li>
+          <li>AI and data engineering</li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-size: 0.82rem; display: block; margin-bottom: 8px;">What We Need From CCV</strong>
+        <ul class="feature-list blue">
+          <li>System access and credentials</li>
+          <li>Stakeholder availability for feedback</li>
+          <li>Timely review and approvals</li>
+          <li>Content and brand assets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="card">
+    <h3>12-Month Build Timeline</h3>
+    <p style="margin-bottom: 24px;">A phased approach that delivers working software incrementally, with demos and feedback checkpoints at every stage.</p>
+
+    <div class="timeline">
+      <div class="timeline-item phase1">
+        <div class="timeline-label" style="color: #192F57;">Phase 1: April - July 2026</div>
+        <div class="timeline-title">Foundation and SGO Priority</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>SGO Web App prototyping and core architecture</li>
+            <li>Student and advisor portal foundations</li>
+            <li>Stripe payment integration rebuild</li>
+            <li>Command Center framework and executive dashboard wireframes</li>
+            <li>Data migration planning and Theodore data extraction</li>
+            <li>Part 2 AI training sessions begin</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item phase2">
+        <div class="timeline-label" style="color: #F59E0B;">Phase 2: August - October 2026</div>
+        <div class="timeline-title">V1 Build and Command Center</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>SGO Web App V1 feature-complete</li>
+            <li>All three SGO portals functional</li>
+            <li>Command Center core pillars built</li>
+            <li>Department dashboards (prioritized rollout)</li>
+            <li>CRM integration decisions finalized</li>
+            <li>Data migrations from Pathwright, Growth Zone, Cornerstone</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item phase3">
+        <div class="timeline-label" style="color: #059669;">Phase 3: November - December 2026</div>
+        <div class="timeline-title">Integration, Testing, and Soft Launch</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Full system integration testing</li>
+            <li>AI chatbot deployment for SGO</li>
+            <li>Analytics and reporting finalization</li>
+            <li>Staff training on new platforms</li>
+            <li>Soft launch with select user groups</li>
+            <li>Compliance hub validation across all states</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item phase4">
+        <div class="timeline-label" style="color: #7c3aed;">Phase 4: January - March 2027</div>
+        <div class="timeline-title">Full Launch, Iteration, and Expansion</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Full production launch of both products</li>
+            <li>User feedback iteration and refinements</li>
+            <li>Full AI adoption across departments</li>
+            <li>SGO national expansion support</li>
+            <li>Department workflow automation rollout</li>
+            <li>Transition planning to maintenance phase</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 7. NEXT STEPS -->
+<div class="section" id="next-steps">
+  <div class="section-header">
+    <div class="section-number green">7</div>
+    <h2>Next Steps</h2>
+  </div>
+
+  <div class="callout blue">
+    <strong>Where We Go From Here</strong>
+    <p>The 60-day assessment phase has given us a complete picture of CCV's technology landscape, organizational needs, and growth goals. Every system has been reviewed, every department has been heard, and the path forward is clear.</p>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: 16px;">The findings in this document point to a single conclusion: CCV needs purpose-built technology that matches the scale and ambition of its mission. The current patchwork of disconnected systems served the organization through its earlier growth, but the next chapter requires a unified platform designed around how CCV actually works.</p>
+
+    <p style="margin-bottom: 16px;">We have documented detailed product requirements, mapped every integration point, and built a phased plan that delivers working software at every stage. The groundwork is done. The architecture is defined. The team is ready.</p>
+
+    <p>The next step is to move from assessment into build, beginning with the SGO Web App and Command Center foundations in Phase 1. We look forward to partnering with CCV's leadership and staff to bring this vision to life.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>AI Data Management -- Confidential -- Prepared for Center for Christian Virtue Leadership</p>
+  <p style="margin-top: 4px;">Assessment Period: January - March 2026</p>
+</div>
+
+<script>
+// Highlight active nav on scroll
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav-bar a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
